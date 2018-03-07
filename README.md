@@ -105,23 +105,32 @@ If you are wondering what Georgian alphabets look like, or what's the difference
 ## Interpretation
 Apart from straightforward conversion, the package also supports interpretation capabilities via `anbani.core.interpret`, which automagically detects the language of the text and converts to desired `to` parameter script.
 ```javascript
-// interpret(TEXT, TO)
+// function interpret(TEXT, TO)
 
 anbani.core.interpret("iyo arabeTs rostevan mefe RmrTisagan sviani", "mkhedruli")
 // 'იყო არაბეთს როსტევან მეფე ღმრთისაგან სვიანი'
 ```
 
 ## Random text generation
-`anbani.lorem` supports random text generation in Georgian. You can generate texts with `word count` and `paragraph count`. Here's an example:
+`anbani.lorem` supports random text and names generation in Georgian via `anbani.lorem.sentences`, `anbani.lorem.paragraphs`, and `anbani.lorem.names`. Unlike other packages, `anbani.lorem` utilizes wordlists generated using Neural Networks [CHAR-RNN by Andrej Karpathy](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) that represents truly fake Georgian words with all the statistics preserved. The network was trained on Georgian epic "The Knight with the Panther Skin" (ვეფხისტყაოსანი) and the names of Georgian poets and writers. Corresponding repo will be forthcoming. 
+
+Here's an example for name generation:
 ```javascript
-// sentences(WORD_COUNT)
+anbani.lorem.names(3)
+// ['დამერ გაშვითელი', 'სიბო ყორთელია', 'გიმოლ ვაწოშვილი']
+```
+
+Here's an example for sentence generation:
+```javascript
+// function sentences(WORD_COUNT)
 
 anbani.lorem.sentences(10)
 // 'მოეხვიდეს სიტირენ გიშიხარნი. წეითო გამიზრიან, ჰქონთავისთან გემრუფენ, უკრთებოდემნი მესმანცა მყივნე.'
 ```
-or generate paragraphs using
+
+Here's an example for paragraph generation:
 ```javascript
-// paragraphs(
+// function paragraphs(
 //    WORD_COUNT_PER_PARAGRAPH, 
 //    PARAGRAPH_COUNT, 
 //    NEWLINE_CHAR="\n\n"
@@ -136,18 +145,15 @@ anbani.lorem.paragraphs(20,3)
 >სიპყრო, მშვენოდენო მივისცა უკრთებოდემნი სამატა მოასეხეს ტირსლით სიპყრო? გამიშვშეს სევნა! მართალიპი ვიმცე. უგანდეგო აქამდსაგებენ მიხსენით მზლოს მეგრეცა მტემურსა მითხროს მამდიჰხლეა.'
 
 
-Wordlist was generated using Recurrent Neural Networks ([char-rnn - karpathy](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)) that was trained on Georgian epic - Vefxistyaosani. Corresponding repo will be forthcoming. Note that none of the words generated occur in the training dataset (the poem), but rather are built to mimic underlying constructs of the language. This makes the text feel fully Georgian while actually meaning nothing (which is good, since you don't need to worry about awkward permutation that might ever occur). 
+Note that none of the words generated occur in the training dataset (the poem), but rather are built to mimic underlying constructs of the language. This makes the text feel fully Georgian while actually meaning nothing (which is good, since you don't need to worry about awkward permutation that might ever occur). 
 
 Alternatively, you can load up your own wordlist if you want. 
 
 ```javascript
-anbani.lorem.loadWordlist(
-    ["ბუქტარ", "ბუქტარ", "ბე", "აბელ", "კამენ", 
-    "კუმანე", "ინკლი", "ბინკლი", "გრამაცინკლი", "ვიშლაძეე"]
-)
+anbani.lorem.loadWordlist(["კაპიკი", "გაკაპიკებულა", "საკაპიკეში", "ჩაკაპიკებულა"])
 
 anbani.lorem.sentences(7)
-// 'ბუქტარ ბუქტარ კუმანე ბე კამენ, ინკლი გრამაცინკლი.'
+// 'გაკაპიკებულა კაპიკი ჩაკაპიკებულა კაპიკი! გაკაპიკებულა ჩაკაპიკებულა საკაპიკეში.'
 ```
 
 ## Toolkit
