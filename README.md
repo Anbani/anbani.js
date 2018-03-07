@@ -1,4 +1,4 @@
-Anbani is a multifunctional toolkit designed for Georgian Alphabet. Its main functionality revolves around text conversion between various Georgian alphabets `anbani.convert` and random text generation `anbani.lorem`. 
+**Anbani** is a multifunctional toolkit designed for Georgian Alphabet. Main functionalities include text conversion between various Georgian alphabets via `anbani.convert` and random text generation via `anbani.lorem`. 
 
 # Installation
 To install the package simple grab it from `npm`
@@ -52,7 +52,7 @@ Here are all of the conversions supported. Note that you may convert `to` any of
 | qwerty        | qarTuli   | iyo arabeTs rostevan    |
 
 
-If you are wondering how Georgian alphabets look like, or what's the difference between all these latinizations here's the table for that as well. Note: if you are not seeing Mtavruli, that's because it was recently added to Unicode and rollout will probably take a while. You can grab DejaVu fonts that support Mtavruli already.
+If you are wondering what Georgian alphabets look like, or what's the difference between all these latinizations here's the table for that as well. Note: if you are not seeing Mtavruli, that's because it was recently added to Unicode and rollout will probably take a while. You can grab DejaVu fonts that support Mtavruli already.
 
 |mkhedruli|ა|ბ|გ|დ|ე|ვ|ზ|თ|ი|კ|ლ|მ|ნ|ო|პ|ჟ|რ|ს|ტ|უ|ფ|ქ|ღ|ყ|შ|ჩ|ც|ძ|წ|ჭ|ხ|ჯ|ჰ|ჱ|ჲ|ჳ|ჴ|ჵ|ჶ|ჷ|ჸ|ჹ|ჺ|ჽ|
 |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
@@ -99,7 +99,7 @@ anbani.lorem.paragraphs(20,3)
 */
 ```
 
-Wordlist was generated using Recurrent Neural Networks ([char-rnn - karpathy](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)) that was trained on Georgian epic - Vefxistyaosani. Corresponding repo will be forthcoming. Note that none of the words generated occur in the training dataset (the poem), but rather are built to mimic underlying constructs of the language. This makes the text feel fully Georgian while actually meaning nothing (which is good, since you don't need to worry about awkward permutation of text that might ever occur). 
+Wordlist was generated using Recurrent Neural Networks ([char-rnn - karpathy](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)) that was trained on Georgian epic - Vefxistyaosani. Corresponding repo will be forthcoming. Note that none of the words generated occur in the training dataset (the poem), but rather are built to mimic underlying constructs of the language. This makes the text feel fully Georgian while actually meaning nothing (which is good, since you don't need to worry about awkward permutation that might ever occur). 
 
 Alternatively, you can load up your own wordlist if you want. 
 
@@ -169,7 +169,7 @@ friedman = anbani.toolkit.friedman(generated)
 console.log(`Friedman index: ${Math.round(friedman * 1000)/1000}`)
 ````
 
-## What else
+# What else
 The code is under MIT license, freely distributed for anyone who wants to use it (just don't forget to mention the source). 
 
 Pull requests and collabs are most welcome!
