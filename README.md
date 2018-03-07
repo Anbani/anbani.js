@@ -183,27 +183,32 @@ anbani.toolkit.frequency(text)
 ```
 
 ## RunKit
-Here's a RunKit note for the package [https://npm.runkit.com/anbani](https://runkit.com/embed/ed31ct6hm2g9)
+Here's a RunKit note for the package [https://npm.runkit.com/anbani](https://runkit.com/georgegach/5aa03ca329a82c001295c09e)
 ```javascript
 var anbani = require("anbani")
 
+// Core module
+console.log( anbani.core.convert("ქართული ანბანი", "მხედრული", "შანიძისეული") )
+console.log( anbani.core.interpret("vefxistyaosani", "asomtavruli") )
+
+// Lorem module
+console.log( anbani.lorem.sentences(7) ) // param: number of words in total
+console.log( anbani.lorem.paragraphs(10, 2) ) // params: number of words per paragraph, number of paragraphs
+anbani.lorem.loadWordlist(["სუპი", "სოუზი"]) // load custom dataset
+console.log( anbani.lorem.sentences(7) )
+console.log( anbani.lorem.names(3) ) // param: number of names
+
+// Working with texts
 var text = `რომელმან შექმნა სამყარო ძალითა მით ძლიერითა,
 ზეგარდმო არსნი სულითა ყვნა ზეცით მონაბერითა,
 ჩვენ, კაცთა, მოგვცა ქვეყანა, გვაქვს უთვალავი ფერითა,
 მისგან არს ყოვლი ხელმწიფე სახითა მის მიერითა.`
+console.log(`Friedman score: ${anbani.toolkit.friedman(text)}`)
 
-var converted = anbani.core.convert(text, "mkhedruli", "asomtavruli")
-console.log(`Converted text: ${converted}`)
+var converted = anbani.core.convert(text, "mkhedruli", "khutsuri")
+console.log(`The given text is in '${anbani.core.$.classifyText(converted)}' style`)
 
-var friedman = anbani.toolkit.friedman(text)
-console.log(`Friedman index: ${Math.round(friedman * 1000)/1000}`)
 
-console.log(anbani.toolkit.count(converted))
-
-var generated = anbani.lorem.sentences(30)
-console.log(`Generated text: ${generated}`)
-friedman = anbani.toolkit.friedman(generated)
-console.log(`Friedman index: ${Math.round(friedman * 1000)/1000}`)
 ````
 
 # What else
