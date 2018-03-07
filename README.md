@@ -1,9 +1,46 @@
-**Anbani** is a multifunctional toolkit designed for Georgian Alphabet. Main functionalities include text conversion between various Georgian alphabets via `anbani.convert` and random text generation via `anbani.lorem`. 
+**Anbani** is a multifunctional toolkit designed for Georgian Alphabet. Main functionalities include text conversion between various Georgian alphabets via `anbani.core` and random text generation via `anbani.lorem`. 
+
+
 
 # Installation
 To install the package simple grab it from `npm`
 ```bash
 npm install anbani
+```
+# Structure
+Here's the structure of the package with four main modules: `core` for conversion and interpretation of letters, `lorem` for random text generation, `data` for accessing the datasets, and `toolkit` for bonus features.
+
+Minor features from each module are exposed in `$`, such as `anbani.core.$.*` and `anbani.lorem.$.*`.
+```javascript
+anbani
+  ├─ core
+  │  ├─ convert [Function]
+  │  ├─ interpret [Function]
+  │  └─ $
+  │     └─ classifyText [Function]
+  ├─ lorem
+  │  ├─ sentences [Function]
+  │  ├─ paragraphs [Function]
+  │  ├─ loadWordlist [Function]
+  │  ├─ names [Function]
+  │  └─ $
+  │     ├─ randomFirstName [Function]
+  │     ├─ randomLastName [Function]
+  │     └─ randomWord [Function]
+  ├─ toolkit
+  │  ├─ friedman [Function]
+  │  ├─ frequency [Function]
+  │  └─ count [Function]
+  └─ data
+    ├─ ab
+    │  ├─ mkhedruli [String]
+    │  ├─ asomtavruli [String]
+    │  ├─ nuskhuri [String]
+    │  └─ mtavruli [String]
+    └─ lorem
+        ├─ firstNames [Array]
+        ├─ lastNames [Array]
+        └─ words [Array]
 ```
 
 # Usage
@@ -13,24 +50,24 @@ var anbani = require('anbani')
 ```
 
 ## Conversion
-`anbani.convert` supports all of the Georgian unicameral and bicameral alphabets for conversion listed bellow and even more. Note that you may use Georgian and Latin letters to pass parameters. It's just a less headache. 
+`anbani.core.convert` supports all of the Georgian unicameral and bicameral alphabets for conversion listed bellow and even more. Note that you may use Georgian and Latin letters to pass parameters. It's just a less headache. 
 ```javascript
 // convert(TEXT, FROM, TO)
 
-anbani.convert("ანბანი", "მხედრული", "ასომთავრული")
+anbani.core.convert("ანბანი", "მხედრული", "ასომთავრული")
 // 'ႠႬႡႠႬႨ'
 
-anbani.convert("ანბანი", "mkhedruli", "ნუსხური")
+anbani.core.convert("ანბანი", "mkhedruli", "ნუსხური")
 // 'ⴀⴌⴁⴀⴌⴈ'
 ```
 
 Georgian also has bicameral styles of the alphabet. If you first hear about that now, check out [this article](https://medium.com/@georgegach/%E1%83%A5%E1%83%90%E1%83%A0%E1%83%97%E1%83%A3%E1%83%9A%E1%83%98-%E1%83%9B%E1%83%97%E1%83%90%E1%83%95%E1%83%A0%E1%83%A3%E1%83%9A%E1%83%94%E1%83%91%E1%83%98%E1%83%A1-%E1%83%A8%E1%83%94%E1%83%A1%E1%83%90%E1%83%AE%E1%83%94%E1%83%91-5c2d376ff3ac). 
 Generally, automatic capitalization occurs at the beginning of the sentence. However, you can also append the letter with `'` symbol in order to capitalize the word during conversion. This trick also works at [anbani.ge](http://anbani.ge) as well. Here's an example
 ```javascript
-anbani.convert("ა'ნბანი", "მხედრული", "შანიძისეული")
+anbani.core.convert("ა'ნბანი", "მხედრული", "შანიძისეული")
 // 'Ⴀნბანი'
 
-anbani.convert("ი'ყო ა'რაბეთს რ'ოსტევან", "mkhedruli", "shanidziseuli")
+anbani.core.convert("ი'ყო ა'რაბეთს რ'ოსტევან", "mkhedruli", "shanidziseuli")
 // 'Ⴈყო Ⴀრაბეთს Ⴐოსტევან'
 ```
 
@@ -66,11 +103,11 @@ If you are wondering what Georgian alphabets look like, or what's the difference
 |phonetic|ɑ|b|g|d|ɛ|v|z|tʰ|ɪ|k\'|l|m|n|ɔ|p\'|ʒ|r|s|t\'|u|pʰ|kʰ|ɣ|q\'|ʃ|tʃ|ts|dz|ts\'|tʃʼ|x|dʒ|h|ɛj|j|wi|q|hɔɛ|f|ə|ʔ|ɢ|ʕ||
 
 ## Interpretation
-Apart from straightforward conversion, the package also supports interpretation capabilities via `anbani.interpret`, which automagically detects the language of the text and converts to desired `to` parameter script.
+Apart from straightforward conversion, the package also supports interpretation capabilities via `anbani.core.interpret`, which automagically detects the language of the text and converts to desired `to` parameter script.
 ```javascript
 // interpret(TEXT, TO)
 
-anbani.interpret("iyo arabeTs rostevan mefe RmrTisagan sviani", "mkhedruli")
+anbani.core.interpret("iyo arabeTs rostevan mefe RmrTisagan sviani", "mkhedruli")
 // 'იყო არაბეთს როსტევან მეფე ღმრთისაგან სვიანი'
 ```
 
@@ -155,7 +192,7 @@ var text = `რომელმან შექმნა სამყარო �
 ჩვენ, კაცთა, მოგვცა ქვეყანა, გვაქვს უთვალავი ფერითა,
 მისგან არს ყოვლი ხელმწიფე სახითა მის მიერითა.`
 
-var converted = anbani.convert(text, "mkhedruli", "asomtavruli")
+var converted = anbani.core.convert(text, "mkhedruli", "asomtavruli")
 console.log(`Converted text: ${converted}`)
 
 var friedman = anbani.toolkit.friedman(text)
