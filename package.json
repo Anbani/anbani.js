@@ -1,0 +1,21 @@
+{
+  "name": "anbani",
+  "version": "1.0.2",
+  "description": "Javascript toolkit for Georgian Alphabet - Anbani",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "converter",
+    "interpreter",
+    "lorem",
+    "ipsum",
+    "anbani",
+    "alphabet",
+    "georgian",
+    "georgia"
+  ],
+  "author": "georgegach",
+  "license": "MIT"
+}
