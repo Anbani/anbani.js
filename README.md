@@ -54,11 +54,11 @@ import anbani from "anbani";
 ```
 You may use it in browser via `window` global
 ```html
-<script src="https://raw.githubusercontent.com/Anbani/anbani.js/master/dist/anbani.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/anbani@latest/dist/anbani.js"></script>
 ```
 To try modern `module` definition in browsers you may include directly from source 
 ```html
-<script type="module" src="https://raw.githubusercontent.com/Anbani/anbani.js/master/src/anbani.mjs"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/anbani@latest/src/anbani.mjs"></script>
 ```
 
 ## Conversion
