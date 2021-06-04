@@ -58,7 +58,7 @@ You may use it in browser via `window` global
 ```
 To try modern `module` definition in browsers you may include directly from source 
 ```html
-<script type="module" src="https://raw.githubusercontent.com/Anbani/anbani.js/master/src/anbani.js"></script>
+<script type="module" src="https://raw.githubusercontent.com/Anbani/anbani.js/master/src/anbani.mjs"></script>
 ```
 
 ## Conversion
