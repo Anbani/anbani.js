@@ -56,9 +56,12 @@ You may use it in browser via `window` global
 ```html
 <script src="https://cdn.jsdelivr.net/npm/anbani@latest/dist/anbani.js"></script>
 ```
-To try modern `module` definition in browsers you may include directly from source 
+To try modern `module` definition in browsers you may include directly from source. (Notice `src` directory in URL) 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/anbani@latest/src/anbani.mjs"></script>
+<script type="module">
+  import anbani from "https://cdn.jsdelivr.net/npm/anbani@latest/src/anbani.mjs";
+  ...
+</script>
 ```
 
 ## Conversion
