@@ -44,9 +44,21 @@ anbani
 ```
 
 # Usage
-Initialize package in your app as follows
+Initialize package in CommonJS format as follows
 ```javascript
-var anbani = require('anbani')
+const anbani = require('anbani')
+```
+Load the module in ESM definition like this
+```javascript
+import anbani from "anbani";
+```
+You may use it in browser via `window` global
+```html
+<script src="https://raw.githubusercontent.com/Anbani/anbani.js/master/dist/anbani.js"></script>
+```
+To try modern `module` definition in browsers you may include directly from source 
+```html
+<script type="module" src="https://raw.githubusercontent.com/Anbani/anbani.js/master/src/anbani.js"></script>
 ```
 
 ## Conversion

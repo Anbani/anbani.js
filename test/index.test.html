@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="module">
+      import anbaniUMD from "../dist/anbani.js";
+    </script>
+
+    <script type="module">
+      import anbaniMJS from "../src/anbani.mjs";
+    </script>
+
+    <script src="../dist/anbani.js"></script>
+  </head>
+  <body style="background-color: #212121;">
+    <h1 style="word-wrap:break-word; color:#ccc"></h1>
+    <script>
+      window.onload = function () {
+        console.log(
+          "if all else fails, good old global import should still work on webpack bundle",
+          window.anbani
+        );
+
+        document.querySelector("h1").innerHTML = `${anbani.data.ab.asomtavruli.slice(0,33)}${anbani.data.ab.mtavruli.slice(0,33)}${anbani.data.ab.mkhedruli.slice(0,33)}${anbani.data.ab.nuskhuri.slice(0,33)}`
+      };
+    </script>
+  </body>
+</html>

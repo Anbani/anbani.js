@@ -1,19 +1,19 @@
-data = require('./data.js')
+import data from "./data.mjs"
 
-freqs = data.frequency.summed
-dataset = data.vefxwords
+const freqs = data.frequency.summed
+const dataset = data.vefxwords
 
-var loadWordlist = (wordlist) => 
+const loadWordlist = (wordlist) => 
 {
     dataset = wordlist
 }
 
-var sentences = (nwords) => {
+const sentences = (nwords) => {
     return createSentences(createWords(nwords))
 } 
 
 
-var paragraphs = (nwords, npar, newline="\n\n") => {
+const paragraphs = (nwords, npar, newline="\n\n") => {
     let paragraphs = ""
 
     for (let i=0; i < npar; i++){
@@ -23,8 +23,8 @@ var paragraphs = (nwords, npar, newline="\n\n") => {
     return paragraphs
 }
 
-var createSentences = (words) => {
-    var sentences = ""
+const createSentences = (words) => {
+    let sentences = ""
     
     for (let i=0; i < words.length; i++){
         sentences += words[i] + randomMark()
@@ -35,7 +35,7 @@ var createSentences = (words) => {
 }
 
 
-var names = (nnames) => {
+const names = (nnames) => {
     let results = []
     for (let i = 0; i < nnames; i++) {
         results.push(randomFirstName() + ' ' + randomLastName())
@@ -43,11 +43,11 @@ var names = (nnames) => {
     return results
 }
 
-var randomFirstName = () => {
+const randomFirstName = () => {
     return data.fnames[randomNumber(0, data.fnames.length)]
 }
 
-var randomLastName = () => {
+const randomLastName = () => {
     return data.lnames[randomNumber(0, data.lnames.length)]
 }
 
@@ -59,7 +59,7 @@ String.prototype.setCharAt = function(where, what, offset)
     return this.substr(0,where) + what + this.substr(where+what.length+offset);
 }
 
-var randomMark = () => {
+const randomMark = () => {
     let r = Math.random()
     for (let i=0; i<freqs.length; i++) {
         if (r < freqs[i][1])
@@ -68,11 +68,11 @@ var randomMark = () => {
     return ' '
 }
 
-var randomWord = () => {
+const randomWord = () => {
     return dataset[randomNumber(0,dataset.length)]
 }
 
-var createWords = (nwords) => {
+const createWords = (nwords) => {
     let words = []
     for (let i=0; i < nwords; i++){
         words.push(randomWord())
@@ -82,13 +82,12 @@ var createWords = (nwords) => {
 }
 
 // Random number [min, max)
-var randomNumber = (min, max) => {
+const randomNumber = (min, max) => {
     return Math.floor(Math.random() * (max-min) + min)
 }
 
+const $ = { randomFirstName, randomLastName, randomWord };
 
-module.exports = {
-    sentences, paragraphs, loadWordlist, names, 
-    $ : { randomFirstName, randomLastName, randomWord }
-}
-{sentences, paragraphs, loadWordlist }
+export default {
+    sentences, paragraphs, loadWordlist, names, $
+};

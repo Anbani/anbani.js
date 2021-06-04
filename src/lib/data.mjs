@@ -370,4 +370,4 @@ data.lnames = [
     'მორჟვონანდიშვილი',
 ]
 
-module.exports = data
+export default data

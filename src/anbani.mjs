@@ -1,9 +1,12 @@
-core = require('./lib/core.js')
-lorem = require('./lib/lorem.js')
-toolkit = require('./lib/toolkit.js')
-data = require('./lib/data.js')
+import core from "./lib/core.mjs";
+import lorem from "./lib/lorem.mjs";
+import toolkit from "./lib/toolkit.mjs";
+import data from "./lib/data.mjs";
+import utils from "./lib/utils.mjs";
 
-var anbani = {
+core.$ = {classifyText : utils.classifyText}
+
+const anbani = {
     core, lorem, toolkit,
     data : {
         ab : {
@@ -19,6 +22,8 @@ var anbani = {
             words : data.vefxwords
         }
     },
-}
+};
 
-module.exports = anbani
+
+export {core, lorem, toolkit, data}
+export default anbani

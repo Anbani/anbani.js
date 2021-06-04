@@ -1,15 +1,16 @@
-data = require('./data.js')
-utils = require('./utils.js')
+import data from "./data.mjs";
+import utils from "./utils.mjs";
 
-var convert = (str, from, to) => {
-    dir = {from, to}
+
+const convert = (str, from, to) => {
+    let dir = {from, to}
     utils.checkForAliases(dir)
     utils.checkForDirection(dir)
     return safeConvert(str, dir.from, dir.to)
 }
 
-var interpret = (str, to) => {
-    dir = {to}
+const interpret = (str, to) => {
+    let dir = {to}
     utils.checkForAliases(dir)
     if (str != null)
         if (utils.isBicameral(dir.to))
@@ -18,7 +19,7 @@ var interpret = (str, to) => {
             return convertUnicameral(str, utils.detectAlphabet(str[str.length-1]), dir.to);
 }
 
-var convertUnicameral = (str, from, to) => {
+const convertUnicameral = (str, from, to) => {
     let converted = "";
     for (let i = 0, len = str.length; i < len; i++)
     {
@@ -28,9 +29,9 @@ var convertUnicameral = (str, from, to) => {
     return converted;
 }
 
-var convertBicameral = (str, from, to) =>
+const convertBicameral = (str, from, to) =>
 {
-    var rules = {
+    const rules = {
         "tfileliseuli": {
             upper : "mtavruli",
             lower : "mkhedruli"
@@ -79,7 +80,7 @@ var convertBicameral = (str, from, to) =>
     return converted;
 }
 
-var safeConvert = (str, from, to) => 
+const safeConvert = (str, from, to) => 
 {
     if (str != null)
         if (!utils.isBicameral(to))
@@ -88,7 +89,10 @@ var safeConvert = (str, from, to) =>
             return convertBicameral(str, from, to);
 }
 
+export {convert, interpret, convertUnicameral, convertBicameral, safeConvert}
 
-module.exports = {
-    convert, interpret, 
-}
+export default {
+    convert, 
+    interpret, 
+    $:utils.classifyText
+};

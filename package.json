@@ -1,10 +1,13 @@
 {
   "name": "anbani",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Multifunctional javascript toolkit for Georgian Alphabet - Anbani",
-  "main": "index.js",
+  "module": "src/anbani.js",
+  "main": "dist/anbani.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "build": "webpack --mode=production --node-env=production",
+    "bt": "webpack --mode=production --node-env=production && mocha && http-server . -o ./test/index.test.html"
   },
   "keywords": [
     "converter",
@@ -14,11 +17,17 @@
     "anbani",
     "alphabet",
     "georgian",
-    "georgia"
+    "georgia",
+    "ქართული",
+    "ანბანი"
   ],
   "author": "georgegach",
   "license": "MIT",
   "devDependencies": {
-    "treeify": "^1.1.0"
+    "mocha": "^8.4.0",
+    "treeify": "^1.1.0",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }

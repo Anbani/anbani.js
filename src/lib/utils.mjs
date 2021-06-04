@@ -1,3 +1,4 @@
+import data from "./data.mjs"
 
 var utils = {}
 
@@ -170,4 +171,4 @@ utils.isSame = (b1, b2) => {
 
 
 
-module.exports = utils
+export default utils

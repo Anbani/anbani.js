@@ -1,7 +1,4 @@
-data = require('./data.js')
-
-
-var frequency = (text, miss="[ა-ჰ-Ⴀ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => {
+const frequency = (text, miss="[ა-ჰ-Ⴀ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => {
     let splitted = text.toUpperCase().split('')
     let length = splitted.length
     let table = {}
@@ -22,7 +19,7 @@ var frequency = (text, miss="[ა-ჰ-Ⴀ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") =>
     return table
 }
 
-var count = (text, miss="[ა-ჰ-Ⴀ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => {
+const count = (text, miss="[ა-ჰ-Ⴀ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => {
     let splitted = text.toUpperCase().split('')
     let length = splitted.length
     let table = {}
@@ -39,7 +36,7 @@ var count = (text, miss="[ა-ჰ-Ⴀ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => {
     return table
 }
 
-var friedman = (text, miss="[ა-ჰ-Ⴀ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => {
+const friedman = (text, miss="[ა-ჰ-Ⴀ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => {
     let table = count(text, miss)
     let sum = 0
     let total = 0
@@ -51,4 +48,4 @@ var friedman = (text, miss="[ა-ჰ-Ⴀ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => 
 }
 
 
-module.exports = {friedman, frequency, count}
+export default {friedman, frequency, count};
