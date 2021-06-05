@@ -2,6 +2,9 @@
 
 node_modules
 
+# playground
+playground/
+
 # Only apps should have lockfiles
 yarn.lock
 package-lock.json

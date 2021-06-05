@@ -1,13 +1,14 @@
 {
   "name": "anbani",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Multifunctional javascript toolkit for Georgian Alphabet - Anbani",
   "module": "src/anbani.js",
   "main": "dist/anbani.js",
   "scripts": {
     "test": "mocha",
     "build": "webpack --mode=production --node-env=production",
-    "bt": "webpack --mode=production --node-env=production && mocha && http-server . -o ./test/index.test.html"
+    "bt": "webpack --mode=production --node-env=production && mocha && http-server . -o ./test/index.test.html",
+    "md": "nodemon utils/markdown.mjs"
   },
   "keywords": [
     "converter",
@@ -24,10 +25,11 @@
   "author": "georgegach",
   "license": "MIT",
   "devDependencies": {
+    "http-server": "^0.12.3",
     "mocha": "^8.4.0",
+    "nodemon": "^2.0.7",
     "treeify": "^1.1.0",
     "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-cli": "^4.7.0"
   }
 }

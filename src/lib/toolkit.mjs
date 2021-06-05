@@ -1,4 +1,4 @@
-const frequency = (text, miss="[ა-ჰ-Ⴀ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => {
+const frequency = (text, miss="[ა-ჰᲐ-ᲰႠ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => {
     let splitted = text.toUpperCase().split('')
     let length = splitted.length
     let table = {}
@@ -19,7 +19,7 @@ const frequency = (text, miss="[ა-ჰ-Ⴀ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") 
     return table
 }
 
-const count = (text, miss="[ა-ჰ-Ⴀ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => {
+const count = (text, miss="[ა-ჰᲐ-ᲰႠ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => {
     let splitted = text.toUpperCase().split('')
     let length = splitted.length
     let table = {}
@@ -36,7 +36,7 @@ const count = (text, miss="[ა-ჰ-Ⴀ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => {
     return table
 }
 
-const friedman = (text, miss="[ა-ჰ-Ⴀ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => {
+const friedman = (text, miss="[ა-ჰᲐ-ᲰႠ-Ⴠⴀ-ⴠa-zA-ZА-Яа-я]") => {
     let table = count(text, miss)
     let sum = 0
     let total = 0

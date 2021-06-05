@@ -88,34 +88,44 @@ anbani.core.convert("ი'ყო ა'რაბეთს რ'ოსტევან
 
 Here are all of the conversions supported. Note that you may convert `to` any of these types but not all of them are supported to be converted `from`. In other words, you can only convert from Mkhedruli, Asomtavruli, Nuskhuri, Mtavruli, and Qwerty, since there is no 1-to-1 relation amongst others. 
 
+
 |               | word      | sentence                             |
 |---------------|-----------|--------------------------------------|
-| mkhedruli     | ქართული  | იყო არაბეთს როსტევან               |
-| asomtavruli   | ႵႠႰႧႳႪႨ | ႨႷႭ ႠႰႠႡႤႧႱ ႰႭႱႲႤႥႠႬ        |
-| nuskhuri      | ⴕⴀⴐⴇⴓⴊⴈ | ⴈⴗⴍ ⴀⴐⴀⴁⴄⴇⴑ ⴐⴍⴑⴒⴄⴅⴀⴌ           |
-| mtavruli      | ᲥᲐᲠᲗᲣᲚᲘ | ᲘᲧᲝ ᲐᲠᲐᲑᲔᲗᲡ ᲠᲝᲡᲢᲔᲕᲐᲜ    |
-| khutsuri      | Ⴕⴀⴐⴇⴓⴊⴈ | Ⴈⴗⴍ ⴀⴐⴀⴁⴄⴇⴑ ⴐⴍⴑⴒⴄⴅⴀⴌ    |
-| shanidziseuli | Ⴕართული | Ⴈყო არაბეთს როსტევან    |
-| tfileliseuli  | Ქართული | Იყო არაბეთს როსტევან    |
-| phonetic      | kʰɑrtʰulɪ | ɪq'ɔ ɑrɑbɛtʰs rɔst'ɛvɑn |
-| transcription | kartuli   | iqo arabets rost'evan   |
-| iso_9984      | k'art'uli | iqo arabet's rostevan   |
-| common        | kartuli   | iyo arabets rostevan    |
-| qwerty        | qarTuli   | iyo arabeTs rostevan    |
+|mkhedruli|ქართული|დავით აღმაშენებელი ქართველთა წმინდანია|
+|mtavruli|ᲥᲐᲠᲗᲣᲚᲘ|ᲓᲐᲕᲘᲗ ᲐᲦᲛᲐᲨᲔᲜᲔᲑᲔᲚᲘ ᲥᲐᲠᲗᲕᲔᲚᲗᲐ ᲬᲛᲘᲜᲓᲐᲜᲘᲐ|
+|asomtavruli|ႵႠႰႧႳႪႨ|ႣႠႥႨႧ ႠႶႫႠႸႤႬႤႡႤႪႨ ႵႠႰႧႥႤႪႧႠ ႼႫႨႬႣႠႬႨႠ|
+|nuskhuri|ⴕⴀⴐⴇⴓⴊⴈ|ⴃⴀⴅⴈⴇ ⴀⴖⴋⴀⴘⴄⴌⴄⴁⴄⴊⴈ ⴕⴀⴐⴇⴅⴄⴊⴇⴀ ⴜⴋⴈⴌⴃⴀⴌⴈⴀ|
+|khutsuri|Ⴕⴀⴐⴇⴓⴊⴈ|Ⴃⴀⴅⴈⴇ ⴀⴖⴋⴀⴘⴄⴌⴄⴁⴄⴊⴈ ⴕⴀⴐⴇⴅⴄⴊⴇⴀ ⴜⴋⴈⴌⴃⴀⴌⴈⴀ|
+|shanidziseuli|Ⴕართული|Ⴃავით აღმაშენებელი ქართველთა წმინდანია|
+|tfileliseuli|Ქართული|Დავით აღმაშენებელი ქართველთა წმინდანია|
+|phonetic|kʰɑrtʰuli|dɑvitʰ ɑʁmɑʃɛnɛbɛli kʰɑrtʰvɛltʰɑ t͡sʼ'mindɑniɑ|
+|common|qartuli|davit aghmashenebeli qartvelta tsmindania|
+|cyrillic|картули|давит агмашенебели картвелта тцминданиа|
+|national|kartuli|davit aghmashenebeli kartvelta ts'mindania|
+|iso_9984|k'art'uli|davit' aḡmašenebeli k'art'velt'a cmindania|
+|bgn|k'art'uli|davit' aghmashenebeli k'art'velt'a tsmindania|
+|qwerty|qarTuli|daviT aRmaSenebeli qarTvelTa wmindania|
 
 
 If you are wondering what Georgian alphabets look like, or what's the difference between all these latinizations here's the table for that as well. Note: if you are not seeing Mtavruli, that's because it was recently added to Unicode and rollout will probably take a while. You can grab DejaVu fonts that support Mtavruli already.
 
-|mkhedruli|ა|ბ|გ|დ|ე|ვ|ზ|თ|ი|კ|ლ|მ|ნ|ო|პ|ჟ|რ|ს|ტ|უ|ფ|ქ|ღ|ყ|შ|ჩ|ც|ძ|წ|ჭ|ხ|ჯ|ჰ|ჱ|ჲ|ჳ|ჴ|ჵ|ჶ|ჷ|ჸ|ჹ|ჺ|ჽ|
-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
-|asomtavruli|Ⴀ|Ⴁ|Ⴂ|Ⴃ|Ⴄ|Ⴅ|Ⴆ|Ⴇ|Ⴈ|Ⴉ|Ⴊ|Ⴋ|Ⴌ|Ⴍ|Ⴎ|Ⴏ|Ⴐ|Ⴑ|Ⴒ|Ⴓ|Ⴔ|Ⴕ|Ⴖ|Ⴗ|Ⴘ|Ⴙ|Ⴚ|Ⴛ|Ⴜ|Ⴝ|Ⴞ|Ⴟ|Ⴠ|Ⴡ|Ⴢ|Ⴣ|Ⴤ|Ⴥ||||||Ⴭ|
-|nuskhuri|ⴀ|ⴁ|ⴂ|ⴃ|ⴄ|ⴅ|ⴆ|ⴇ|ⴈ|ⴉ|ⴊ|ⴋ|ⴌ|ⴍ|ⴎ|ⴏ|ⴐ|ⴑ|ⴒ|ⴓ|ⴔ|ⴕ|ⴖ|ⴗ|ⴘ|ⴙ|ⴚ|ⴛ|ⴜ|ⴝ|ⴞ|ⴟ|ⴠ|ⴡ|ⴢ|ⴣ|ⴤ|ⴥ||||||ⴭ|
-|mtavruli|Ა|Ბ|Გ|Დ|Ე|Ვ|Ზ|Თ|Ი|Კ|Ლ|Მ|Ნ|Ო|Პ|Ჟ|Რ|Ს|Ტ|Უ|Ფ|Ქ|Ღ|Ყ|Შ|Ჩ|Ც|Ძ|Წ|Ჭ|Ხ|Ჯ|Ჰ|Ჱ|Ჲ|Ჳ|Ჴ|Ჵ|Ჶ||||||
-|qwerty|a|b|g|d|e|v|z|T|i|k|l|m|n|o|p|J|r|s|t|u|f|q|R|y|S|C|c|Z|w|W|x|j|h|E|I|V|X|H|F|D|Y|G|L||
-|common|a|b|g|d|e|v|z|t|i|k|l|m|n|o|p|zh|r|s|t|u|f|k|g|y|sh|ch|c|dz|w\'|ch\'|x|j|h||||||||||||
-|transcription|a|b|g|d|e|v|z|t|i|k\'|l|m|n|o|p\'|zh|r|s|t\'|u|p|k|gh|q|sh|ch|ts|dz|ts\'|ch\'|kh|j|h||||||||||||
-|ISO_9984|a|b|g|d|e|v|z|t\'|i|k|l|m|n|o|p|ž|r|s|t|u|p\'|k\'|ḡ|q|š|č\'|c\'|j|c|č|kh|ǰ|h|ē|y|w|ẖ\'|ō|f||||||
-|phonetic|ɑ|b|g|d|ɛ|v|z|tʰ|ɪ|k\'|l|m|n|ɔ|p\'|ʒ|r|s|t\'|u|pʰ|kʰ|ɣ|q\'|ʃ|tʃ|ts|dz|ts\'|tʃʼ|x|dʒ|h|ɛj|j|wi|q|hɔɛ|f|ə|ʔ|ɢ|ʕ||
+
+||||||||||||||||||||||||||||||||||||||||||||||||||
+|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+|mkhedruli|ა|ბ|გ|დ|ე|ვ|ზ|თ|ი|კ|ლ|მ|ნ|ო|პ|ჟ|რ|ს|ტ|უ|ფ|ქ|ღ|ყ|შ|ჩ|ც|ძ|წ|ჭ|ხ|ჯ|ჰ|ჱ|ჲ|ჳ|ჴ|ჵ|ჶ|ჷ|ჸ|ჹ|ჺ|჻|ჼ|ჽ|ჾ|ჿ|
+|mtavruli|Ა|Ბ|Გ|Დ|Ე|Ვ|Ზ|Თ|Ი|Კ|Ლ|Მ|Ნ|Ო|Პ|Ჟ|Რ|Ს|Ტ|Უ|Ფ|Ქ|Ღ|Ყ|Შ|Ჩ|Ც|Ძ|Წ|Ჭ|Ხ|Ჯ|Ჰ|Ჱ|Ჲ|Ჳ|Ჴ|Ჵ|Ჶ|Ჷ|Ჸ|Ჹ|Ჺ|᲻|᲼|Ჽ|Ჾ|Ჿ|
+|asomtavruli|Ⴀ|Ⴁ|Ⴂ|Ⴃ|Ⴄ|Ⴅ|Ⴆ|Ⴇ|Ⴈ|Ⴉ|Ⴊ|Ⴋ|Ⴌ|Ⴍ|Ⴎ|Ⴏ|Ⴐ|Ⴑ|Ⴒ|Ⴓ|Ⴔ|Ⴕ|Ⴖ|Ⴗ|Ⴘ|Ⴙ|Ⴚ|Ⴛ|Ⴜ|Ⴝ|Ⴞ|Ⴟ|Ⴠ|Ⴡ|Ⴢ|Ⴣ|Ⴤ|Ⴥ|჆|Ⴧ|჈|჉|჊|჋|჌|Ⴭ|჎|჏|
+|nuskhuri|ⴀ|ⴁ|ⴂ|ⴃ|ⴄ|ⴅ|ⴆ|ⴇ|ⴈ|ⴉ|ⴊ|ⴋ|ⴌ|ⴍ|ⴎ|ⴏ|ⴐ|ⴑ|ⴒ|ⴓ|ⴔ|ⴕ|ⴖ|ⴗ|ⴘ|ⴙ|ⴚ|ⴛ|ⴜ|ⴝ|ⴞ|ⴟ|ⴠ|ⴡ|ⴢ|ⴣ|ⴤ|ⴥ|⴦|ⴧ|⴨|⴩|⴪|⴫|⴬|ⴭ|⴮|⴯|
+|phonetic|ɑ|b|g|d|ɛ|v|z|tʰ|i|k'|l|m|n|ɔ|p'|ʒ|r|s|t'|u|pʰ|kʰ|ʁ|q'|ʃ|t͡ʃ|t͡s|d͡z|t͡sʼ'|t͡ʃʼ|χ|d͡ʒ|h|eɪ|j|w|qʰ|oː|f|ə|ʔ|ɢ|ʕ||◌̃|ə|||
+|common|a|b|g|d|e|v|z|t|i|k|l|m|n|o|p|zh|r|s|t|u|f|q|gh|y|sh|ch|c|dz|ts|tch|x|j|h|e|i|ui|x|hoi|f|oa|h|gh|rgh|||oa|||
+|cyrillic|а|б|г|д|е|в|з|т|и|к|л|м|н|о|п|ж|р|с|т|у|ф|к|г|к|ш|ч|ц|дз|тц|тч|х|дж|х|е|й|уй|х|хо|ф|оа|х|г|рг|||оа|||
+|iso_9984|a|b|g|d|e|v|z|t'|i|k|l|m|n|o|p|ž|r|s|t|u|p'|k'|ḡ|q|š|č'|c'|j|c|č|x|ǰ|h|ē|y|w|ẖ'|ō|f||||||||||
+|national|a|b|g|d|e|v|z|t|i|k'|l|m|n|o|p'|zh|r|s|t'|u|p|k|gh|q'|sh|ch|ts|dz|ts'|ch'|kh|j|h||||||||||||||||
+|bgn|a|b|g|d|e|v|z|t'|i|k|l|m|n|o|p|zh|r|s|t|u|p'|k'|gh|q|sh|ch'|ts'|dz|ts|ch|kh|j|h|ey|j||q'||||||||||||
+|qwerty|a|b|g|d|e|v|z|T|i|k|l|m|n|o|p|J|r|s|t|u|f|q|R|y|S|C|c|Z|w|W|x|j|h|E|I|V|X|H|F|D|Y|G|L|>|N|<|{|}|
+|numeric|1|2|3|4|5|6|7|9|10|20|30|40|50|70|80|90|100|200|300|400|500|600|700|800|900|1000|2000|3000|4000|5000|6000|8000|9000|8|60|400|7000|10000|||||||||||
+
+
 
 ## Interpretation
 Apart from straightforward conversion, the package also supports interpretation capabilities via `anbani.core.interpret`, which automagically detects the language of the text and converts to desired `to` parameter script.
@@ -204,9 +214,9 @@ anbani.toolkit.frequency(text)
 ```
 
 ## RunKit
-Here's a RunKit note for the package [https://npm.runkit.com/anbani](https://runkit.com/georgegach/5aa03ca329a82c001295c09e)
+Here's a RunKit note for the package [https://npm.runkit.com/anbani](https://npm.runkit.com/anbani)
 ```javascript
-var anbani = require("anbani")
+const anbani = require("anbani")
 
 // Core module
 console.log( anbani.core.convert("ქართული ანბანი", "მხედრული", "შანიძისეული") )
@@ -215,7 +225,7 @@ console.log( anbani.core.interpret("vefxistyaosani", "asomtavruli") )
 // Lorem module
 console.log( anbani.lorem.sentences(7) ) // param: number of words in total
 console.log( anbani.lorem.paragraphs(10, 2) ) // params: number of words per paragraph, number of paragraphs
-anbani.lorem.loadWordlist(["სუპი", "სოუზი"]) // load custom dataset
+anbani.lorem.loadWordlist(["ანი", "ბანი"]) // load custom dataset
 console.log( anbani.lorem.sentences(7) )
 console.log( anbani.lorem.names(3) ) // param: number of names
 
@@ -238,4 +248,5 @@ The code is under MIT license, freely distributed for anyone who wants to use it
 Pull requests and collabs are most welcome!
 
 Cheers,  
-George ჻ anbani.ge
+[George](https://github.com/georgegach) [჻](https://i.imgur.com/ZeuIZQE.jpg) anbani.ge
+___

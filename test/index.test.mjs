@@ -1,54 +1,102 @@
-import assert from 'assert';
+import assert from "assert";
 import anbani from "../src/anbani.mjs";
 import anbaniUMD from "../dist/anbani.js";
 
-describe("ESM source integration testing", function() {
-
-    it("should be able to transcribe from mkhedruli to asomtavruli", function() { 
-        assert.strictEqual(
-            anbani.core.convert("იყო არაბეთს როსტევან", "mkhedruli", "mtavruli"),
-            "ᲘᲧᲝ ᲐᲠᲐᲑᲔᲗᲡ ᲠᲝᲡᲢᲔᲕᲐᲜ"
-        );
+describe("ESM source integration testing", function () {
+  describe("anbani.core", function () {
+    it("should be able to transcribe from mkhedruli to asomtavruli", function () {
+      assert.strictEqual(
+        anbani.core.convert("იყო არაბეთს როსტევან", "mkhedruli", "asomtavruli"),
+        "ႨႷႭ ႠႰႠႡႤႧႱ ႰႭႱႲႤႥႠႬ"
+      );
     });
 
-    it("should be able to interpret things in mkhedruli", function() { 
-        assert.strictEqual(
-            anbani.core.interpret("iyo arabeTs rostevan", "mkhedruli"),
-            "იყო არაბეთს როსტევან"
-        );
+    it("should be able to interpret things in mkhedruli", function () {
+      assert.strictEqual(
+        anbani.core.interpret("iyo arabeTs rostevan", "mkhedruli"),
+        "იყო არაბეთს როსტევან"
+      );
     });
 
-    it("should be able to classify mkhedruli", function() { 
-        assert.strictEqual(
-            anbani.core.$.classifyText("როსტევან"),
-            "mkhedruli"
-        );
+    it("should be able to classify mkhedruli", function () {
+      assert.strictEqual(anbani.core.$.classifyText("როსტევან"), "mkhedruli");
+    });
+  });
+  describe("anbani.data", function () {
+    it("[ⴀⴁⴂⴃⴄⴅⴆⴇⴈⴉⴊⴋⴌⴍⴎⴏⴐⴑⴒⴓⴔⴕⴖⴗⴘⴙⴚⴛⴜⴝⴞⴟⴠⴡⴢⴣⴤⴥ⴦ⴧ⴨⴩⴪⴫⴬ⴭ⴮⴯]", function () {
+      assert.strictEqual(
+        anbani.data.ab.nuskhuri,
+        "ⴀⴁⴂⴃⴄⴅⴆⴇⴈⴉⴊⴋⴌⴍⴎⴏⴐⴑⴒⴓⴔⴕⴖⴗⴘⴙⴚⴛⴜⴝⴞⴟⴠⴡⴢⴣⴤⴥ⴦ⴧ⴨⴩⴪⴫⴬ⴭ⴮⴯"
+      );
     });
 
-    it("should be able to access mkhedruli alphabet string", function() { 
-        assert.strictEqual(
-            anbani.data.ab.mkhedruli,
-            "აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰჱჲჳჴჵჶჷჸჹჺჽ"
-        );
+    it("[ႠႡႢႣႤႥႦႧႨႩႪႫႬႭႮႯႰႱႲႳႴႵႶႷႸႹႺႻႼႽႾႿჀჁჂჃჄჅ჆Ⴧ჈჉჊჋჌Ⴭ჎჏]", function () {
+      assert.strictEqual(
+        anbani.data.ab.asomtavruli,
+        "ႠႡႢႣႤႥႦႧႨႩႪႫႬႭႮႯႰႱႲႳႴႵႶႷႸႹႺႻႼႽႾႿჀჁჂჃჄჅ჆Ⴧ჈჉჊჋჌Ⴭ჎჏"
+      );
     });
 
+    it("[აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰჱჲჳჴჵჶჷჸჹჺ჻ჼჽჾჿ]", function () {
+      assert.strictEqual(
+        anbani.data.ab.mkhedruli,
+        "აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰჱჲჳჴჵჶჷჸჹჺ჻ჼჽჾჿ"
+      );
+    });
+
+    it("[ᲐᲑᲒᲓᲔᲕᲖᲗᲘᲙᲚᲛᲜᲝᲞᲟᲠᲡᲢᲣᲤᲥᲦᲧᲨᲩᲪᲫᲬᲭᲮᲯᲰᲱᲲᲳᲴᲵᲶᲷᲸᲹᲺ᲻᲼ᲽᲾᲿ]", function () {
+      assert.strictEqual(
+        anbani.data.ab.mtavruli,
+        "ᲐᲑᲒᲓᲔᲕᲖᲗᲘᲙᲚᲛᲜᲝᲞᲟᲠᲡᲢᲣᲤᲥᲦᲧᲨᲩᲪᲫᲬᲭᲮᲯᲰᲱᲲᲳᲴᲵᲶᲷᲸᲹᲺ᲻᲼ᲽᲾᲿ"
+      );
+    });
+  });
+
+  describe("anbani.lorem", function () {
+    it("should be able to be generate random sentences", function () {
+      let n = 7;
+      assert.strictEqual(anbani.lorem.sentences(n).split(" ").length, n);
+    });
+
+    it("should be able to be generate custom wordlist random sentences", function () {
+      anbani.lorem.loadWordlist([
+        "კაპიკი",
+        "გაკაპიკებულა",
+        "საკაპიკეში",
+        "ჩაკაპიკებულა",
+      ]);
+      let n = 7;
+      assert.strictEqual(anbani.lorem.sentences(n).split(" ").length, n);
+    });
+  });
+
+  describe("anbani.toolkit", function () {
+    it("should be able to be correctly count letter incidences", function () {
+      let text = "იყო არაბეთს როსტევან მეფე ღმრთისაგან სვიანი";
+      assert.strictEqual(anbani.toolkit.count(text)["Ი"], 4);
+    });
+
+    it("should be able to be correctly compute letter frequencies", function () {
+      let text = "იყო არაბეთს როსტევან მეფე ღმრთისაგან სვიანი";
+      assert.strictEqual(
+        anbani.toolkit.frequency(text)["Ი"],
+        0.09302325581395349
+      );
+    });
+
+    it("should be able to be compute friendman score correctly", function () {
+      let text = "იყო არაბეთს როსტევან მეფე ღმრთისაგან სვიანი";
+      assert.strictEqual(anbani.toolkit.friedman(text), 0.06116642958748222);
+    });
+  });
 });
 
+describe("UMD packaging testing", function () {
+  it("should be able to import UMD module at dist/anbani.js", function () {
+    assert.strictEqual(typeof anbaniUMD, "object");
+  });
 
-describe("UMD packaging testing", function() {
-
-    it("should be able to import UMD module at dist/anbani.js", function() { 
-        assert.strictEqual(
-            typeof anbaniUMD,
-            "object"
-        );
-    });
-
-    it("should be able to validate import structure with UMD module at dist/anbani.js ", function() { 
-        assert.strictEqual(
-            anbaniUMD.data.ab.mkhedruli,
-            anbani.data.ab.mkhedruli 
-        );
-    });
-
+  it("should be able to validate import structure with UMD module at dist/anbani.js ", function () {
+    assert.strictEqual(anbaniUMD.data.ab.mkhedruli, anbani.data.ab.mkhedruli);
+  });
 });

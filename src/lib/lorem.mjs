@@ -1,7 +1,7 @@
 import data from "./data.mjs"
 
 const freqs = data.frequency.summed
-const dataset = data.vefxwords
+var dataset = data.vefxwords
 
 const loadWordlist = (wordlist) => 
 {
@@ -11,7 +11,6 @@ const loadWordlist = (wordlist) =>
 const sentences = (nwords) => {
     return createSentences(createWords(nwords))
 } 
-
 
 const paragraphs = (nwords, npar, newline="\n\n") => {
     let paragraphs = ""

@@ -6,6 +6,7 @@ import utils from "./lib/utils.mjs";
 
 core.$ = {classifyText : utils.classifyText}
 
+// Abstract anbani
 const anbani = {
     core, lorem, toolkit,
     data : {
