@@ -248,5 +248,5 @@ The code is under MIT license, freely distributed for anyone who wants to use it
 Pull requests and collabs are most welcome!
 
 Cheers,  
-[George](https://github.com/georgegach) [჻](https://i.imgur.com/ZeuIZQE.jpg) anbani.ge
+[George](https://github.com/georgegach) [჻](https://i.imgur.com/ZeuIZQE.jpg) [anbani.ge](https://anbani.ge/)
 ___
