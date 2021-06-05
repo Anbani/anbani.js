@@ -7,6 +7,26 @@ To install the package simple grab it from `npm`
 ```bash
 npm install anbani
 ```
+Initialize package in CommonJS format as follows
+```javascript
+const anbani = require('anbani')
+```
+Load the module in ESM definition like this
+```javascript
+import anbani from "anbani";
+```
+You may use it in browser via `window` global
+```html
+<script src="https://cdn.jsdelivr.net/npm/anbani@latest/dist/anbani.js"></script>
+```
+To try modern `module` definition in browsers you may include directly from source. (Notice `src` directory in URL) 
+```html
+<script type="module">
+  import anbani from "https://cdn.jsdelivr.net/npm/anbani@latest/src/anbani.mjs";
+  ...
+</script>
+```
+
 # Structure
 Here's the structure of the package with four main modules: `core` for conversion and interpretation of letters, `lorem` for random text generation, `data` for accessing the datasets, and `toolkit` for bonus features.
 
@@ -44,25 +64,6 @@ anbani
 ```
 
 # Usage
-Initialize package in CommonJS format as follows
-```javascript
-const anbani = require('anbani')
-```
-Load the module in ESM definition like this
-```javascript
-import anbani from "anbani";
-```
-You may use it in browser via `window` global
-```html
-<script src="https://cdn.jsdelivr.net/npm/anbani@latest/dist/anbani.js"></script>
-```
-To try modern `module` definition in browsers you may include directly from source. (Notice `src` directory in URL) 
-```html
-<script type="module">
-  import anbani from "https://cdn.jsdelivr.net/npm/anbani@latest/src/anbani.mjs";
-  ...
-</script>
-```
 
 ## Conversion
 `anbani.core.convert` supports all of the Georgian unicameral and bicameral alphabets for conversion listed bellow and even more. Note that you may use Georgian and Latin letters to pass parameters. It's just a less headache. 
