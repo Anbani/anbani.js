@@ -2,7 +2,7 @@ import assert from "assert";
 import anbani from "../src/anbani.mjs";
 import anbaniUMD from "../dist/anbani.js";
 
-describe("ESM source integration testing", function () {
+describe("ESM module testing", function () {
   describe("anbani.core", function () {
     it("should be able to transcribe from mkhedruli to asomtavruli", function () {
       assert.strictEqual(

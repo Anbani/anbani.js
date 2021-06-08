@@ -11,6 +11,8 @@
 |phonetic|kʰɑrtʰuli|dɑvitʰ ɑʁmɑʃɛnɛbɛli kʰɑrtʰvɛltʰɑ t͡sʼ'mindɑniɑ|
 |common|qartuli|davit aghmashenebeli qartvelta tsmindania|
 |cyrillic|картули|давит агмашенебели картвелта тцминданиа|
+|greek|καρτουλη|νταβητ αγμασͱενεμπελη καρτβελτα τσμηνντανηα|
+|armenian|քառթուլի|դավիթ աղմաշէնէբէլի քառթվէլթա ծմինդանիա|
 |national|kartuli|davit aghmashenebeli kartvelta ts'mindania|
 |iso_9984|k'art'uli|davit' aḡmašenebeli k'art'velt'a cmindania|
 |bgn|k'art'uli|davit' aghmashenebeli k'art'velt'a tsmindania|
@@ -26,6 +28,8 @@ ___
 |phonetic|ɑ|b|g|d|ɛ|v|z|tʰ|i|k'|l|m|n|ɔ|p'|ʒ|r|s|t'|u|pʰ|kʰ|ʁ|q'|ʃ|t͡ʃ|t͡s|d͡z|t͡sʼ'|t͡ʃʼ|χ|d͡ʒ|h|eɪ|j|w|qʰ|oː|f|ə|ʔ|ɢ|ʕ||◌̃|ə|||
 |common|a|b|g|d|e|v|z|t|i|k|l|m|n|o|p|zh|r|s|t|u|f|q|gh|y|sh|ch|c|dz|ts|tch|x|j|h|e|i|ui|x|hoi|f|oa|h|gh|rgh|||oa|||
 |cyrillic|а|б|г|д|е|в|з|т|и|к|л|м|н|о|п|ж|р|с|т|у|ф|к|г|к|ш|ч|ц|дз|тц|тч|х|дж|х|е|й|уй|х|хо|ф|оа|х|г|рг|||оа|||
+|greek|α|μπ|γγ|ντ|ε|β|ζ|τ|η|κ|λ|μ|ν|ο|π|ζͱ|ρ|σ|τ|ου|ψ|κ|γ|κͱ|σͱ|τσ|τσ|δζ|τσ|τσͱ|γχ|τζ|ͱ|ε|ι|υι|κχ|ͱοι|φ|οα|ͱ|γ|ργ|||Ჽα|||
+|armenian|ա|բ|գ|դ|է|վ|զ|թ|ի|կ|լ|մ|ն|օ|պ|ժ|ռ|ս|տ|ու|փ|ք|ղ|կհ|շ|չ|ց|ձ|ծ|ճ|խ|ջ|հ|է|ի|ուի|խ|հօի|ֆ|ը|հ|ղ|ռղ|||ը|||
 |iso_9984|a|b|g|d|e|v|z|t'|i|k|l|m|n|o|p|ž|r|s|t|u|p'|k'|ḡ|q|š|č'|c'|j|c|č|x|ǰ|h|ē|y|w|ẖ'|ō|f||||||||||
 |national|a|b|g|d|e|v|z|t|i|k'|l|m|n|o|p'|zh|r|s|t'|u|p|k|gh|q'|sh|ch|ts|dz|ts'|ch'|kh|j|h||||||||||||||||
 |bgn|a|b|g|d|e|v|z|t'|i|k|l|m|n|o|p|zh|r|s|t|u|p'|k'|gh|q|sh|ch'|ts'|dz|ts|ch|kh|j|h|ey|j||q'||||||||||||

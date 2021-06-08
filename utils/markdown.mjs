@@ -2,11 +2,15 @@ import anbani, { data } from "../src/anbani.mjs";
 import fs from "fs";
 
 let n = data.alphabets["mkhedruli"].length;
-console.log(
-  "> make sure all of the alphabets are of same length:",
-  Object.keys(data.alphabets).every(
-    (a) => data.alphabets[a].length == data.alphabets["mkhedruli"].length
-  )
+console.log("> make sure all of the alphabets are of same length:")
+Object.keys(data.alphabets).every(
+  (a) => {
+    if (data.alphabets[a].length != data.alphabets["mkhedruli"].length) {
+      console.log(`! ${a} is not same length as mkhedruli`)
+      return false
+    }
+    return true
+  }
 );
 
 let rows = "";
@@ -23,6 +27,8 @@ let scripts = [
   "phonetic",
   "common",
   "cyrillic",
+  "greek",
+  "armenian",
   "national",
   "iso_9984",
   "bgn",

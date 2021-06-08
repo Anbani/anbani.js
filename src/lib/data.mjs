@@ -1,7 +1,7 @@
 var data = {};
 
 data.alphabets = {
-    // Georgian alphabet and its four scripts
+    // Modern unicameral Georgian script developed in 10th century 
     mkhedruli : [
         'ა','ბ','გ','დ','ე','ვ','ზ','თ','ი','კ','ლ',
         'მ','ნ','ო','პ','ჟ','რ','ს','ტ','უ','ფ','ქ',
@@ -11,6 +11,7 @@ data.alphabets = {
         '჻','ჼ','ჽ','ჾ','ჿ',
     ],
 
+    // Modern unicameral derivative script of Mkhedruli only used for headlines in all-caps
     mtavruli : [
         'Ა','Ბ','Გ','Დ','Ე','Ვ','Ზ','Თ','Ი','Კ','Ლ',
         'Მ','Ნ','Ო','Პ','Ჟ','Რ','Ს','Ტ','Უ','Ფ','Ქ',
@@ -20,6 +21,7 @@ data.alphabets = {
         '᲻','᲼','Ჽ','Ჾ','Ჿ',
     ],
 
+    // Original Georgian alphabet from 5th century
     asomtavruli : [
         'Ⴀ','Ⴁ','Ⴂ','Ⴃ','Ⴄ','Ⴅ','Ⴆ','Ⴇ','Ⴈ','Ⴉ','Ⴊ',
         'Ⴋ','Ⴌ','Ⴍ','Ⴎ','Ⴏ','Ⴐ','Ⴑ','Ⴒ','Ⴓ','Ⴔ','Ⴕ',
@@ -29,6 +31,7 @@ data.alphabets = {
         '჋','჌','Ⴭ','჎','჏',
     ],
 
+    // Second script of Georgian alphabet first appearing in 9th century
     nuskhuri : [
         'ⴀ','ⴁ','ⴂ','ⴃ','ⴄ','ⴅ','ⴆ','ⴇ','ⴈ','ⴉ','ⴊ',
         'ⴋ','ⴌ','ⴍ','ⴎ','ⴏ','ⴐ','ⴑ','ⴒ','ⴓ','ⴔ','ⴕ',
@@ -38,7 +41,6 @@ data.alphabets = {
         '⴫', '⴬', 'ⴭ', '⴮', '⴯',
     ],
     
-
     // International Phonetic Association (IPA) 
     phonetic : [
         "ɑ","b","g","d","ɛ","v","z","tʰ","i","k'","l",
@@ -67,6 +69,26 @@ data.alphabets = {
         "е","й","уй","х","хо",
         "ф","оа","х","г","рг",
         "","","оа","","",
+    ],
+
+    // Georgian alphabet hellenization 
+    greek : [
+        'α','μπ','γγ','ντ','ε','β','ζ','τ','η','κ','λ',
+        'μ','ν','ο','π','ζͱ','ρ','σ','τ','ου','ψ','κ',
+        'γ','κͱ','σͱ','τσ','τσ','δζ','τσ','τσͱ','γχ','τζ','ͱ',
+        'ε','ι','υι','κχ','ͱοι',
+        'φ','οα','ͱ','γ','ργ',
+        '','','Ჽα','',''
+    ],
+
+    // Georgian alphabet armenianization 
+    armenian : [
+        'ա','բ','գ','դ','է','վ','զ','թ','ի','կ','լ',
+        'մ','ն','օ','պ','ժ','ռ','ս','տ','ու','փ','ք',
+        'ղ','կհ','շ','չ','ց','ձ','ծ','ճ','խ','ջ','հ',
+        'է','ի','ուի','խ','հօի',
+        'ֆ','ը','հ','ղ','ռղ',
+        '','','ը','','',
     ],
 
     // International Standards Organization (http://www.iso.ch) as shown in Apridonidze et al. and UNGEGN
