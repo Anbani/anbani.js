@@ -57,6 +57,7 @@ anbani
     │  ├─ asomtavruli [String]
     │  ├─ nuskhuri [String]
     │  └─ mtavruli [String]
+    ├─ keys [Array]
     └─ lorem
         ├─ firstNames [Array]
         ├─ lastNames [Array]
