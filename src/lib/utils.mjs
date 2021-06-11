@@ -43,28 +43,12 @@ utils.checkForDirection = (dir) => {
         "qwerty",
     ];
     let permitted_to = [
-        "mkhedruli",
-        "asomtavruli",
-        "nuskhuri",
-        "mtavruli",
-        "cyrillic",
-        "greek",
-        "armenian",
-        "qwerty",
-        "khutsuri",
-        "shanidziseuli",
-        "tfileliseuli",
-        "phonetic",
-        "national",
-        "common",
-        "iso_9984",
-        "bgn",
-        "numeric",
+    //    everything is permitted
     ];
     if (permitted_from.indexOf(dir.from) == -1)
         throw `Text conversion from '${dir.from}' is not supported.`;
-    if (permitted_to.indexOf(dir.to) == -1)
-        throw `Text conversion to '${dir.to}' is not supported.`;
+    // if (permitted_to.indexOf(dir.to) == -1)
+    //     throw `Text conversion to '${dir.to}' is not supported.`;
 };
 
 utils.isUnsupported = (str) => {

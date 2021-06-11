@@ -5,6 +5,9 @@ import data from "./lib/data.mjs";
 import utils from "./lib/utils.mjs";
 
 core.$ = {classifyText : utils.classifyText}
+let scripts = Object.keys(data.alphabets).slice(0,4)
+    .concat(["khutsuri", "shanidziseuli", "tfileliseuli"])
+    .concat(Object.keys(data.alphabets).slice(4));
 
 // Abstract anbani
 const anbani = {
@@ -16,6 +19,8 @@ const anbani = {
             nuskhuri: data.alphabets.nuskhuri.join(''),
             mtavruli: data.alphabets.mtavruli.join(''),
         },
+
+        keys : scripts,
 
         lorem : {
             firstNames : data.fnames,

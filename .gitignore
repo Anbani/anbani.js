@@ -4,6 +4,7 @@ node_modules
 
 # playground
 playground/
+utils/playground*
 
 # Only apps should have lockfiles
 yarn.lock

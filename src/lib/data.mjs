@@ -40,6 +40,19 @@ data.alphabets = {
         '⴦','ⴧ','⴨','⴩','⴪',
         '⴫', '⴬', 'ⴭ', '⴮', '⴯',
     ],
+
+    // Collection of letters from all around the world that resemble Mkhedruli
+    sxvanairad : [
+        'ⴢ','ձ','ଌ','ᕦ','၅','ᧆ','୫','ᦎ','ᦵ','૩','ჺ',
+        'ⴋ','চ','ᦂ','Ჴ','ળ','ᦝ','ᒑ','கு','᧗','ᦀ','ⴕ',
+        'ઈ','ᧇ','𑇤','Ⴙ','ઉ','ᑻ','წ','ჭ','ᕹ','ⴟ','Ჱ',
+        '','','','','',
+        '','','','','',
+        '','','','','',
+    ],
+
+    // Zalgo crazy text using diacritics
+    // zalgo : [],
     
     // International Phonetic Association (IPA) 
     phonetic : [

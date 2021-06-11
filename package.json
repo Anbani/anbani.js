@@ -1,6 +1,6 @@
 {
   "name": "anbani",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Multifunctional javascript toolkit for Georgian Alphabet - Anbani",
   "module": "src/anbani.js",
   "main": "dist/anbani.js",
@@ -8,7 +8,8 @@
     "test": "mocha",
     "build": "webpack --mode=production --node-env=production",
     "bt": "webpack --mode=production --node-env=production && mocha && http-server . -o ./test/index.test.html",
-    "md": "nodemon utils/markdown.mjs"
+    "md": "nodemon utils/markdown.mjs",
+    "play": "nodemon utils/playground.mjs"
   },
   "keywords": [
     "converter",

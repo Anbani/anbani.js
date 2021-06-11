@@ -16,24 +16,9 @@ Object.keys(data.alphabets).every(
 let rows = "";
 let word = "ქართული";
 let sentence = "დავით აღმაშენებელი ქართველთა წმინდანია";
-let scripts = [
-  "mkhedruli",
-  "mtavruli",
-  "asomtavruli",
-  "nuskhuri",
-  "khutsuri",
-  "shanidziseuli",
-  "tfileliseuli",
-  "phonetic",
-  "common",
-  "cyrillic",
-  "greek",
-  "armenian",
-  "national",
-  "iso_9984",
-  "bgn",
-  "qwerty",
-];
+let scripts = Object.keys(data.alphabets).slice(0,4)
+    .concat(["khutsuri", "shanidziseuli", "tfileliseuli"])
+    .concat(Object.keys(data.alphabets).slice(4));
 
 scripts.forEach((s) => {
   rows += `|${s}|${anbani.core.convert(
