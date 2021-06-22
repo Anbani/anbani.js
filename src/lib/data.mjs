@@ -1,4 +1,4 @@
-var data = {};
+const data = {};
 
 data.alphabets = {
     // Modern unicameral Georgian script developed in 10th century 

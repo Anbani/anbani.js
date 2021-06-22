@@ -1,8 +1,6 @@
 import data from "./data.mjs";
 
-var utils = {};
-
-utils.checkForAliases = (dir) => {
+export const checkForAliases = (dir) => {
     var aliases = {
         მხედრული: "mkhedruli",
         ასომთავრული: "asomtavruli",
@@ -35,7 +33,7 @@ utils.checkForAliases = (dir) => {
     });
 };
 
-utils.checkForDirection = (dir) => {
+export const checkForDirection = (dir) => {
     let permitted_from = [
         "mkhedruli",
         "asomtavruli",
@@ -52,13 +50,13 @@ utils.checkForDirection = (dir) => {
     //     throw `Text conversion to '${dir.to}' is not supported.`;
 };
 
-utils.isUnsupported = (str) => {
+export const isUnsupported = (str) => {
     return [data.regex.cyrillic.test(str)].some(
         (testResult) => testResult == true
     );
 };
 
-utils.isBicameral = (to) => {
+export const isBicameral = (to) => {
     return to == "tfileliseuli" || to == "shanidziseuli" || to == "khutsuri";
 };
 
@@ -70,13 +68,13 @@ String.prototype.setCharAt = function (where, what, offset) {
     );
 };
 
-utils.toUpperCase = (word, from, to) => {
+export const toUpperCase = (word, from, to) => {
     let char = data.alphabets[to][data.alphabets[from].indexOf(word[0])];
     char = char == undefined ? word[0] : char;
     return word.setCharAt(0, char);
 };
 
-utils.detectAlphabet = (str, idx) => {
+export const detectAlphabet = (str, idx) => {
     if (idx < 0)
         return "qwerty"
     if (data.regex.mkhedruli.test(str[idx]))
@@ -89,10 +87,10 @@ utils.detectAlphabet = (str, idx) => {
         return "mtavruli";
     if (data.regex.nuskhuri.test(str[idx]))
         return "nuskhuri";
-    return utils.detectAlphabet(str, idx-1);
+    return detectAlphabet(str, idx-1);
 };
 
-utils.classifyText = (str) => {
+export const classifyText = (str) => {
     /* MATCHES ALPHABETS [Mkhedruli, Mtavruli, Asomtavruli, Nuskhuri, Latin, Cyrillic] */
     let vector = [
         data.regex.mkhedruli.test(str),
@@ -104,50 +102,50 @@ utils.classifyText = (str) => {
     ];
 
     // Georgian alphabets
-    if (utils.isSame(vector, [true, false, false, false, false, false]))
+    if (isSame(vector, [true, false, false, false, false, false]))
         return "mkhedruli";
 
-    if (utils.isSame(vector, [false, true, false, false, false, false]))
+    if (isSame(vector, [false, true, false, false, false, false]))
         return "mtavruli";
 
-    if (utils.isSame(vector, [false, false, true, false, false, false]))
+    if (isSame(vector, [false, false, true, false, false, false]))
         return "asomtavruli";
 
-    if (utils.isSame(vector, [false, false, false, true, false, false]))
+    if (isSame(vector, [false, false, false, true, false, false]))
         return "nuskhuri";
 
     // Georgian bicameral writings
-    if (utils.isSame(vector, [true, true, false, false, false, false]))
+    if (isSame(vector, [true, true, false, false, false, false]))
         return "tfileliseuli";
 
-    if (utils.isSame(vector, [true, false, true, false, false, false]))
+    if (isSame(vector, [true, false, true, false, false, false]))
         return "shanidziseuli";
 
-    if (utils.isSame(vector, [false, false, true, true, false, false]))
+    if (isSame(vector, [false, false, true, true, false, false]))
         return "khutsuri";
 
     // Non-Georgian alphabets
-    if (utils.isSame(vector, [false, false, false, false, true, false]))
+    if (isSame(vector, [false, false, false, false, true, false]))
         return "latin";
 
-    if (utils.isSame(vector, [false, false, false, false, false, true]))
+    if (isSame(vector, [false, false, false, false, false, true]))
         return "cyrillic";
 
     return vector;
 };
 
 // Char Code At
-utils.cca = (char) => char.charCodeAt(0);
+export const cca = (char) => char.charCodeAt(0);
 
 // From Char Code
-utils.fcc = (code) => String.fromCharCode(code);
+export const fcc = (code) => String.fromCharCode(code);
 
 // same length [Boolean] equals
-utils.isSame = (b1, b2) => {
+export const isSame = (b1, b2) => {
     for (let i = 0, len = b1.length; i < len; i++) {
         if (b1[i] != b2[i]) return false;
     }
     return true;
 };
 
-export default utils;
+export default {checkForAliases, checkForDirection, isUnsupported, isBicameral, toUpperCase, detectAlphabet, classifyText, cca, fcc, isSame};

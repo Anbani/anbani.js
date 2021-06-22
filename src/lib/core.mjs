@@ -1,22 +1,22 @@
 import data from "./data.mjs";
-import utils from "./utils.mjs";
+import {checkForAliases, classifyText, checkForDirection, isBicameral, toUpperCase, detectAlphabet} from "./utils.mjs";
 
 
 const convert = (str, from, to) => {
     let dir = {from, to}
-    utils.checkForAliases(dir)
-    utils.checkForDirection(dir)
+    checkForAliases(dir)
+    checkForDirection(dir)
     return safeConvert(str, dir.from, dir.to)
 }
 
 const interpret = (str, to) => {
     let dir = {to}
-    utils.checkForAliases(dir)
+    checkForAliases(dir)
     if (str != null)
-        if (utils.isBicameral(dir.to))
-            return convertBicameral(str, utils.detectAlphabet(str, str.length-1), dir.to);
+        if (isBicameral(dir.to))
+            return convertBicameral(str, detectAlphabet(str, str.length-1), dir.to);
         else 
-            return convertUnicameral(str, utils.detectAlphabet(str, str.length-1), dir.to);
+            return convertUnicameral(str, detectAlphabet(str, str.length-1), dir.to);
 }
 
 const convertUnicameral = (str, from, to) => {
@@ -59,7 +59,7 @@ const convertBicameral = (str, from, to) =>
     }
     
     // First Letter
-    converted = utils.toUpperCase(converted, lowerScript, upperScript);
+    converted = toUpperCase(converted, lowerScript, upperScript);
 
 
     let matched = converted.match(/[?.!]\s+[A-zႠ-ჰⴀ-ⴠ0-9]/g);
@@ -83,7 +83,7 @@ const convertBicameral = (str, from, to) =>
 const safeConvert = (str, from, to) => 
 {
     if (str != null)
-        if (!utils.isBicameral(to))
+        if (!isBicameral(to))
             return convertUnicameral(str, from, to);
         else
             return convertBicameral(str, from, to);
@@ -94,5 +94,5 @@ export {convert, interpret, convertUnicameral, convertBicameral, safeConvert}
 export default {
     convert, 
     interpret, 
-    $:utils.classifyText
+    $:classifyText
 };
