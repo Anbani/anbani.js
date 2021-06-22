@@ -11,6 +11,7 @@ utils.checkForAliases = (dir) => {
         ხუცური: "khutsuri",
         შანიძისეული: "shanidziseuli",
         ტფილელისეული: "tfileliseuli",
+        ჰომოგლიფი: "homoglyph",
         ფონეტიკური: "phonetic",
         ლათინური: "qwerty",
         კირილიცა: "cyrillic",
@@ -75,18 +76,20 @@ utils.toUpperCase = (word, from, to) => {
     return word.setCharAt(0, char);
 };
 
-utils.detectAlphabet = (str) => {
-    if (data.regex.mkhedruli.test(str))
+utils.detectAlphabet = (str, idx) => {
+    if (idx < 0)
+        return "qwerty"
+    if (data.regex.mkhedruli.test(str[idx]))
         return "mkhedruli";
-    if (data.regex.latin.test(str))
+    if (data.regex.latin.test(str[idx]))
         return "qwerty";
-    if (data.regex.asomtavruli.test(str))
+    if (data.regex.asomtavruli.test(str[idx]))
         return "asomtavruli";
-    if (data.regex.mtavruli.test(str))
+    if (data.regex.mtavruli.test(str[idx]))
         return "mtavruli";
-    if (data.regex.nuskhuri.test(str))
+    if (data.regex.nuskhuri.test(str[idx]))
         return "nuskhuri";
-    return "mkhedruli";
+    return utils.detectAlphabet(str, idx-1);
 };
 
 utils.classifyText = (str) => {

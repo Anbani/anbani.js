@@ -14,9 +14,9 @@ const interpret = (str, to) => {
     utils.checkForAliases(dir)
     if (str != null)
         if (utils.isBicameral(dir.to))
-            return convertBicameral(str, utils.detectAlphabet(str[str.length-1]), dir.to);
+            return convertBicameral(str, utils.detectAlphabet(str, str.length-1), dir.to);
         else 
-            return convertUnicameral(str, utils.detectAlphabet(str[str.length-1]), dir.to);
+            return convertUnicameral(str, utils.detectAlphabet(str, str.length-1), dir.to);
 }
 
 const convertUnicameral = (str, from, to) => {
