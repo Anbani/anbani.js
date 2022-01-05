@@ -6,7 +6,7 @@ import utils from "./lib/utils.mjs";
 
 core.$ = {classifyText : utils.classifyText}
 let scripts = Object.keys(data.alphabets).slice(0,4)
-    .concat(["khutsuri", "shanidziseuli", "tfileliseuli"])
+    .concat(["khutsuri", "shanidziseuli", "tfileliseuli", "anbanismtavruli"])
     .concat(Object.keys(data.alphabets).slice(4));
 
 // Abstract anbani

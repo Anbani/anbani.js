@@ -32,6 +32,11 @@ const convertUnicameral = (str, from, to) => {
 const convertBicameral = (str, from, to) =>
 {
     const rules = {
+        "anbanismtavruli": {
+            upper : "asomtavruli",
+            lower : "mtavruli"
+        },
+        
         "tfileliseuli": {
             upper : "mtavruli",
             lower : "mkhedruli"

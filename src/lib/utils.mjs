@@ -9,6 +9,7 @@ export const checkForAliases = (dir) => {
         ხუცური: "khutsuri",
         შანიძისეული: "shanidziseuli",
         ტფილელისეული: "tfileliseuli",
+        "ანბანის მთავრული": "anbanismtavruli",
         ჰომოგლიფი: "homoglyph",
         ფონეტიკური: "phonetic",
         ლათინური: "qwerty",
@@ -42,7 +43,7 @@ export const checkForDirection = (dir) => {
         "qwerty",
     ];
     let permitted_to = [
-    //    everything is permitted
+        //    everything is permitted
     ];
     if (permitted_from.indexOf(dir.from) == -1)
         throw `Text conversion from '${dir.from}' is not supported.`;
@@ -57,7 +58,7 @@ export const isUnsupported = (str) => {
 };
 
 export const isBicameral = (to) => {
-    return to == "tfileliseuli" || to == "shanidziseuli" || to == "khutsuri";
+    return to == "tfileliseuli" || to == "shanidziseuli" || to == "khutsuri" || to == "anbanismtavruli";
 };
 
 String.prototype.setCharAt = function (where, what, offset) {
@@ -87,7 +88,7 @@ export const detectAlphabet = (str, idx) => {
         return "mtavruli";
     if (data.regex.nuskhuri.test(str[idx]))
         return "nuskhuri";
-    return detectAlphabet(str, idx-1);
+    return detectAlphabet(str, idx - 1);
 };
 
 export const classifyText = (str) => {
@@ -124,6 +125,9 @@ export const classifyText = (str) => {
     if (isSame(vector, [false, false, true, true, false, false]))
         return "khutsuri";
 
+    if (isSame(vector, [false, true, true, false, false, false]))
+        return "anbanismtavruli";
+
     // Non-Georgian alphabets
     if (isSame(vector, [false, false, false, false, true, false]))
         return "latin";
@@ -148,4 +152,4 @@ export const isSame = (b1, b2) => {
     return true;
 };
 
-export default {checkForAliases, checkForDirection, isUnsupported, isBicameral, toUpperCase, detectAlphabet, classifyText, cca, fcc, isSame};
+export default { checkForAliases, checkForDirection, isUnsupported, isBicameral, toUpperCase, detectAlphabet, classifyText, cca, fcc, isSame };
