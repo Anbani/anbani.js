@@ -22,32 +22,55 @@ describe("ESM module testing", function () {
       assert.strictEqual(anbani.core.$.classifyText("როსტევან"), "mkhedruli");
     });
   });
-  describe("anbani.data", function () {
+  describe("anbani.ab", function () {
+    it("[აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰჱჲჳჴჵჶჷჸჹჺ჻ჼჽჾჿა̈ა̄ა̄̈ე̄ი̄ო̈ო̄ო̄̈უ̈უ̄უ̄̈უ̂ჷ̄]", function () {
+      assert.strictEqual(
+        anbani.ab.letters.mkhedruli,
+        "აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰჱჲჳჴჵჶჷჸჹჺ჻ჼჽჾჿა̈ა̄ა̄̈ე̄ი̄ო̈ო̄ო̄̈უ̈უ̄უ̄̈უ̂ჷ̄"
+      );
+    });
+
     it("[ⴀⴁⴂⴃⴄⴅⴆⴇⴈⴉⴊⴋⴌⴍⴎⴏⴐⴑⴒⴓⴔⴕⴖⴗⴘⴙⴚⴛⴜⴝⴞⴟⴠⴡⴢⴣⴤⴥ⴦ⴧ⴨⴩⴪⴫⴬ⴭ⴮⴯]", function () {
       assert.strictEqual(
-        anbani.data.ab.nuskhuri,
+        anbani.ab.letters.nuskhuri,
         "ⴀⴁⴂⴃⴄⴅⴆⴇⴈⴉⴊⴋⴌⴍⴎⴏⴐⴑⴒⴓⴔⴕⴖⴗⴘⴙⴚⴛⴜⴝⴞⴟⴠⴡⴢⴣⴤⴥ⴦ⴧ⴨⴩⴪⴫⴬ⴭ⴮⴯"
       );
     });
 
     it("[ႠႡႢႣႤႥႦႧႨႩႪႫႬႭႮႯႰႱႲႳႴႵႶႷႸႹႺႻႼႽႾႿჀჁჂჃჄჅ჆Ⴧ჈჉჊჋჌Ⴭ჎჏]", function () {
       assert.strictEqual(
-        anbani.data.ab.asomtavruli,
+        anbani.ab.letters.asomtavruli,
         "ႠႡႢႣႤႥႦႧႨႩႪႫႬႭႮႯႰႱႲႳႴႵႶႷႸႹႺႻႼႽႾႿჀჁჂჃჄჅ჆Ⴧ჈჉჊჋჌Ⴭ჎჏"
       );
     });
 
-    it("[აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰჱჲჳჴჵჶჷჸჹჺ჻ჼჽჾჿ]", function () {
-      assert.strictEqual(
-        anbani.data.ab.mkhedruli,
-        "აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰჱჲჳჴჵჶჷჸჹჺ჻ჼჽჾჿ"
-      );
-    });
+
 
     it("[ᲐᲑᲒᲓᲔᲕᲖᲗᲘᲙᲚᲛᲜᲝᲞᲟᲠᲡᲢᲣᲤᲥᲦᲧᲨᲩᲪᲫᲬᲭᲮᲯᲰᲱᲲᲳᲴᲵᲶᲷᲸᲹᲺ᲻᲼ᲽᲾᲿ]", function () {
       assert.strictEqual(
-        anbani.data.ab.mtavruli,
+        anbani.ab.letters.mtavruli,
         "ᲐᲑᲒᲓᲔᲕᲖᲗᲘᲙᲚᲛᲜᲝᲞᲟᲠᲡᲢᲣᲤᲥᲦᲧᲨᲩᲪᲫᲬᲭᲮᲯᲰᲱᲲᲳᲴᲵᲶᲷᲸᲹᲺ᲻᲼ᲽᲾᲿ"
+      );
+    });
+
+    it("should convert to caps", function () {
+      assert.strictEqual(
+        anbani.ab.caps("ანბანი"),
+        "ᲐᲜᲑᲐᲜᲘ"
+      );
+    });
+
+    it("should convert to bicam", function () {
+      assert.strictEqual(
+        anbani.ab.bicam("ქართული ა'ნბანი"),
+        "Ⴕართული Ⴀნბანი"
+      );
+    });
+
+    it("should convert to bicaps", function () {
+      assert.strictEqual(
+        anbani.ab.bicaps("ქართული ა'ნბანი"),
+        "ႵᲐᲠᲗᲣᲚᲘ ႠᲜᲑᲐᲜᲘ"
       );
     });
   });
@@ -97,6 +120,6 @@ describe("UMD packaging testing", function () {
   });
 
   it("should be able to validate import structure with UMD module at dist/anbani.js ", function () {
-    assert.strictEqual(anbaniUMD.data.ab.mkhedruli, anbani.data.ab.mkhedruli);
+    assert.strictEqual(anbaniUMD.ab.letters.mkhedruli, anbani.ab.letters.mkhedruli);
   });
 });

@@ -55,7 +55,7 @@ String.prototype.setCharAt = function(where, what, offset)
 {
     offset = offset || 0;
     if(where > this.length-1) return this;
-    return this.substr(0,where) + what + this.substr(where+what.length+offset);
+    return this.substring(0,where) + what + this.substring(where+what.length+offset);
 }
 
 const randomMark = () => {
