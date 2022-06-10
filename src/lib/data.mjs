@@ -36,7 +36,7 @@ data.alphabets = {
         'Ღ','Ყ','Შ','Ჩ','Ც','Ძ','Წ','Ჭ','Ხ','Ჯ','Ჰ',
         'Ჱ','Ჲ','Ჳ','Ჴ','Ჵ',
         'Ჶ','Ჷ','Ჸ','Ჹ','Ჺ',
-        '᲻','᲼','Ჽ','Ჾ','Ჿ',
+        "","",'Ჽ','Ჾ','Ჿ',
         "","","","","",
         "","","","","",
         "","","",
@@ -48,8 +48,8 @@ data.alphabets = {
         'Ⴋ','Ⴌ','Ⴍ','Ⴎ','Ⴏ','Ⴐ','Ⴑ','Ⴒ','Ⴓ','Ⴔ','Ⴕ',
         'Ⴖ','Ⴗ','Ⴘ','Ⴙ','Ⴚ','Ⴛ','Ⴜ','Ⴝ','Ⴞ','Ⴟ','Ⴠ',
         'Ⴡ','Ⴢ','Ⴣ','Ⴤ','Ⴥ',
-        '჆','Ⴧ','჈','჉','჊',
-        '჋','჌','Ⴭ','჎','჏',
+        "","","","","",
+        "","","","","",
         "","","","","",
         "","","","","",
         "","","",
@@ -61,8 +61,8 @@ data.alphabets = {
         'ⴋ','ⴌ','ⴍ','ⴎ','ⴏ','ⴐ','ⴑ','ⴒ','ⴓ','ⴔ','ⴕ',
         'ⴖ','ⴗ','ⴘ','ⴙ','ⴚ','ⴛ','ⴜ','ⴝ','ⴞ','ⴟ','ⴠ',
         'ⴡ','ⴢ','ⴣ','ⴤ','ⴥ',
-        '⴦','ⴧ','⴨','⴩','⴪',
-        '⴫', '⴬', 'ⴭ', '⴮', '⴯',
+        "","","","","",
+        "", "", "", "", "",
         "","","","","",
         "","","","","",
         "","","",
@@ -182,7 +182,7 @@ data.alphabets = {
     // ala_lc : [],
 
 
-    // Kohanimeandmebaas (Place Names Database) of Eesti Keele Instituut (Institute of the Estonian Language) (http://www.eki.ee).
+    // Kohanimeandmebaas (Place Names Database) of Eesti Keele Instituut (Institute of the Estonian Language) (http://www.eki.ee).
     // knab : [],
 
     // United States Board on Geographic Names and the Permanent Committee on Geographical Names for British Official Use
