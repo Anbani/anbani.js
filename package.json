@@ -1,6 +1,6 @@
 {
   "name": "anbani",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "Multifunctional javascript toolkit for Georgian Alphabet - Anbani",
   "module": "src/anbani.mjs",
   "main": "dist/anbani.js",
