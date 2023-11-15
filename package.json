@@ -10,7 +10,7 @@
     "bt": "npm run build && npm run test && http-server . -o ./test/index.test.html",
     "md": "nodemon utils/markdown.mjs",
     "play": "nodemon utils/playground.mjs",
-    "release" : "npm publish"
+    "release": "npm publish"
   },
   "keywords": [
     "converter",
@@ -30,8 +30,8 @@
   "author": "georgegach",
   "license": "MIT",
   "devDependencies": {
-    "http-server": "^0.12.3",
-    "mocha": "^8.4.0",
+    "http-server": "^14.1.1",
+    "mocha": "^10.2.0",
     "nodemon": "^2.0.7",
     "treeify": "^1.1.0",
     "webpack": "^5.38.1",
