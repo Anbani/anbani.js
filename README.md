@@ -91,6 +91,7 @@ anbani.core.convert("ი'ყო ა'რაბეთს რ'ოსტევან
 Here are all of the conversions supported. Note that you may convert `to` any of these types but not all of them are supported to be converted `from`. In other words, you can only convert from Mkhedruli, Asomtavruli, Nuskhuri, Mtavruli, and Qwerty, since there is no 1-to-1 relation amongst others. 
 
 
+
 |               | word      | sentence                             |
 |---------------|-----------|--------------------------------------|
 |names|ქანანრაეთანუნლასინ|დონანვინინთან ანღანმანანშინენნარენბანენლასინ ქანანრაეთანვინენლასთანან წილმანინნარდონანნარინან|
@@ -111,6 +112,7 @@ Here are all of the conversions supported. Note that you may convert `to` any of
 |iso_9984|k'art'uli|davit' aḡmašenebeli k'art'velt'a cmindania|
 |national|kartuli|davit aghmashenebeli kartvelta ts'mindania|
 |bgn|k'art'uli|davit' aghmashenebeli k'art'velt'a tsmindania|
+|titus|kartuli|davit aġmašenebeli kartvelta c̣mindania|
 |qwerty|qarTuli|daviT aRmaSenebeli qarTvelTa wmindania|
 |numeric|600110094003010|416109 17004019005505253010 60011009653091 40004010504150101|
 
@@ -134,6 +136,7 @@ If you are wondering what Georgian alphabets look like, or what's the difference
 |iso_9984|a|b|g|d|e|v|z|t'|i|k|l|m|n|o|p|ž|r|s|t|u|p'|k'|ḡ|q|š|č'|c'|j|c|č|x|ǰ|h|ē|y|w|ẖ'|ō|f|||||||||||||||||||||||
 |national|a|b|g|d|e|v|z|t|i|k'|l|m|n|o|p'|zh|r|s|t'|u|p|k|gh|q'|sh|ch|ts|dz|ts'|ch'|kh|j|h|||||||||||||||||||||||||||||
 |bgn|a|b|g|d|e|v|z|t'|i|k|l|m|n|o|p|zh|r|s|t|u|p'|k'|gh|q|sh|ch'|ts'|dz|ts|ch|kh|j|h|ey|j||q'|||||||||||||||||||||||||
+|titus|a|b|g|d|e|v|z|t|i|ḳ|l|m|n|o|ṗ|ž|r|s|ṭ|u|p|k|ġ|q̇|š|č|c|ӡ|c̣|č̣|x|ǯ|h|ē|y|w|q|ō||||||||||||||||||||||||
 |qwerty|a|b|g|d|e|v|z|T|i|k|l|m|n|o|p|J|r|s|t|u|f|q|R|y|S|C|c|Z|w|W|x|j|h|E|I|V|X|H|F|D|Y|G|L|>|N|<|{|}||||||||||||||
 |numeric|1|2|3|4|5|6|7|9|10|20|30|40|50|70|80|90|100|200|300|400|500|600|700|800|900|1000|2000|3000|4000|5000|6000|8000|9000|8|60|400|7000|10000||||||||||||||||||||||||
 
