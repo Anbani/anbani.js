@@ -199,7 +199,17 @@ export default {
         ],
 
         // Thesaurus Indogermanischer Text- und Sprachmaterialien (http://titus.uni-frankfurt.de)
-        // titus : []
+        titus : [
+            "a", "b", "g", "d", "e", "v", "z", "t", "i", "ḳ", "l", 
+            "m", "n", "o", "ṗ", "ž", "r", "s", "ṭ", "u", "p", "k", 
+            "ġ", "q̇", "š", "č", "c", "ӡ", "c̣", "č̣", "x", "ǯ", "h", 
+            "ē", "y", "w", "q", "ō",
+            "", "", "", "", "",
+            "", "", "", "", "",
+            "", "", "", "", "",
+            "", "", "", "", "",
+            "", "", "",     
+        ],
 
         // Latin to Georgian QWERTY keyboard mapping used for older fonts
         qwerty: [
