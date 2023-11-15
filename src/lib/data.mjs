@@ -198,7 +198,7 @@ export default {
             "", "", "",
         ],
 
-        // Thesaurus Indogermanischer Text- und Sprachmaterialien (http://titus.uni-frankfurt.de)
+        // The transliterating system TITUS was introduced by the journal "Georgika" in Jena and was adapted by Jost Gippert for TITUS (https://titus.uni-frankfurt.de/).
         titus : [
             "a", "b", "g", "d", "e", "v", "z", "t", "i", "ḳ", "l", 
             "m", "n", "o", "ṗ", "ž", "r", "s", "ṭ", "u", "p", "k", 
