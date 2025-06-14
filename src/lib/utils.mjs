@@ -9,8 +9,9 @@ export const checkForAliases = (dir) => {
         ხუცური: "khutsuri",
         შანიძისეული: "shanidziseuli",
         ტფილელისეული: "tfileliseuli",
-        "ანბანის მთავრული": "sasataure",
+        სასათაურე: "sasataure",
         ჰომოგლიფი: "homoglyph",
+        ბრაილი: "braille",
         ფონეტიკური: "phonetic",
         ლათინური: "qwerty",
         კირილიცა: "cyrillic",
@@ -41,6 +42,7 @@ export const checkForDirection = (dir) => {
         "nuskhuri",
         "mtavruli",
         "qwerty",
+        "braille",
     ];
     let permitted_to = [
         //    everything is permitted

@@ -13,6 +13,7 @@ export default {
             "ა-უმლაუტი", "ა-მაკრონი", "ა-მაკრონ-უმლაუტი", "ე-მაკრონი", "ი-მაკრონი",
             "ო-უმლაუტი", "ო-მაკრონი", "ო-მაკრონ-უმლაუტი", "უ-უმლაუტი", "უ-მაკრონი",
             "უ-მაკრონ-უმლაუტი", "უ-ბრჯგუ", "ჷნ-მაკრონი",
+            "წერტილი", "მძიმე", "კითხვის ნიშანი", "ძახილის ნიშანი", "წერტილ-მძიმე", "ორწერტილი",
 
         ],
 
@@ -27,7 +28,10 @@ export default {
             "ა̈", "ა̄", "ა̄̈", "ე̄", "ი̄",
             "ო̈", "ო̄", "ო̄̈", "უ̈", "უ̄",
             "უ̄̈", "უ̂", "ჷ̄",
+            ".", ",", "?", "!", ";", ":",
+
         ],
+
 
         // Modern unicameral derivative script of Mkhedruli only used for headlines in all-caps
         mtavruli: [
@@ -40,6 +44,8 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",
+            ".", ",", "?", "!", ";", ":",
+
         ],
 
         // Original Georgian alphabet from 5th century
@@ -53,6 +59,8 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",
+            ".", ",", "?", "!", ";", ":",
+
         ],
 
         // Second script of Georgian alphabet first appearing in 9th century
@@ -66,6 +74,8 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",
+            ".", ",", "?", "!", ";", ":",
+
         ],
 
         // Collection of letters from all around the world that resemble Mkhedruli
@@ -79,6 +89,8 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",
+            ".", ",", "?", "!", ";", ":",
+
         ],
 
         // Zalgo crazy text using diacritics
@@ -95,6 +107,22 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",
+            ".", ",", "?", "!", ";", ":",
+
+        ],
+
+        // Braille https://en.wikipedia.org/wiki/Georgian_Braille
+        braille: [
+            "⠁", "⠃", "⠛", "⠙", "⠑", "⠺", "⠵", "⠋", "⠊", "⠅", "⠇",
+            "⠍", "⠝", "⠕", "⠏", "⠚", "⠗", "⠎", "⠞", "⠥", "⠧", "⠻",
+            "⠫", "⠮", "⠱", "⠟", "⠉", "⠽", "⠹", "⠭", "⠓", "⠪", "⠯",
+            "", "", "", "", "",
+            "", "", "", "", "",
+            "⠌", "", "", "", "",
+            "", "", "", "", "",
+            "", "", "", "", "",
+            "", "", "",
+            "⠲", "⠂", "⠦", "⠖", "⠆", "⠒",
         ],
 
         // Commonly adopted romanization as seen on social media
@@ -108,6 +136,8 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",
+            ".", ",", "?", "!", ";", ":",
+
         ],
 
         // Georgian alphabet cyrillization 
@@ -121,6 +151,8 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",
+            ".", ",", "?", "!", ";", ":",
+
         ],
 
         // Georgian alphabet hellenization 
@@ -134,6 +166,8 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",
+            ".", ",", "?", "!", ";", ":",
+
         ],
 
         // Georgian alphabet armenianization 
@@ -147,6 +181,8 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",
+            ".", ",", "?", "!", ";", ":",
+
         ],
 
         // International Standards Organization (http://www.iso.ch) as shown in Apridonidze et al. and UNGEGN
@@ -160,6 +196,8 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",
+            ".", ",", "?", "!", ";", ":",
+
         ],
 
         //  The national system of romanization adopted in February 2002 by the State Department of Geodesy and Cartography of Georgia and the Institute of Linguistics, Georgian Academy of Sciences
@@ -173,6 +211,8 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",
+            ".", ",", "?", "!", ";", ":",
+
         ],
 
         // Iberiul-K’avk’asiuri enatmetsnierebis ts’elits’deuli [Annual of Ibero-Caucasian Linguistics] as shown in The World’s Writing Systems. Variant forms separated with a slash
@@ -196,6 +236,8 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",
+            ".", ",", "?", "!", ";", ":",
+
         ],
 
         // The transliterating system TITUS was introduced by the journal "Georgika" in Jena and was adapted by Jost Gippert for TITUS (https://titus.uni-frankfurt.de/).
@@ -209,6 +251,8 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",     
+            ".", ",", "?", "!", ";", ":",
+
         ],
 
         // Latin to Georgian QWERTY keyboard mapping used for older fonts
@@ -222,6 +266,8 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",
+            ".", ",", "?", "!", ";", ":",
+
         ],
 
         // Numeric values
@@ -235,6 +281,8 @@ export default {
             "", "", "", "", "",
             "", "", "", "", "",
             "", "", "",
+            ".", ",", "?", "!", ";", ":",
+
         ],
 
         // See also http://transliteration.eki.ee/pdf/Georgian.pdf
