@@ -9,7 +9,7 @@ export const checkForAliases = (dir) => {
         ხუცური: "khutsuri",
         შანიძისეული: "shanidziseuli",
         ტფილელისეული: "tfileliseuli",
-        "ანბანის მთავრული": "anbanismtavruli",
+        "ანბანის მთავრული": "sasataure",
         ჰომოგლიფი: "homoglyph",
         ფონეტიკური: "phonetic",
         ლათინური: "qwerty",
@@ -58,7 +58,7 @@ export const isUnsupported = (str) => {
 };
 
 export const isBicameral = (to) => {
-    return to == "tfileliseuli" || to == "shanidziseuli" || to == "khutsuri" || to == "anbanismtavruli";
+    return to == "tfileliseuli" || to == "shanidziseuli" || to == "khutsuri" || to == "sasataure";
 };
 
 String.prototype.setCharAt = function (where, what, offset) {
@@ -126,7 +126,7 @@ export const classifyText = (str) => {
         return "khutsuri";
 
     if (isSame(vector, [false, true, true, false, false, false]))
-        return "anbanismtavruli";
+        return "sasataure";
 
     // Non-Georgian alphabets
     if (isSame(vector, [false, false, false, false, true, false]))

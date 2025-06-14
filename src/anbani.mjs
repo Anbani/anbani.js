@@ -6,7 +6,7 @@ import utils from "./lib/utils.mjs";
 
 core.$ = {classifyText : utils.classifyText}
 let scripts = Object.keys(data.alphabets).slice(0,4)
-    .concat(["khutsuri", "shanidziseuli", "tfileliseuli", "anbanismtavruli"])
+    .concat(["khutsuri", "shanidziseuli", "tfileliseuli", "sasataure"])
     .concat(Object.keys(data.alphabets).slice(4));
 
 // Convenience module 
@@ -22,7 +22,7 @@ let ab = {
     
     caps : (text) => core.convert(text, "mkhedruli", "mtavruli"),
     bicam : (text) => core.convert(text, "mkhedruli", "shanidziseuli"),
-    bicaps : (text) => core.convert(text, "mkhedruli", "anbanismtavruli"),
+    bicaps : (text) => core.convert(text, "mkhedruli", "sasataure"),
 }
 
 // Abstract anbani

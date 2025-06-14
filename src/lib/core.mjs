@@ -30,7 +30,7 @@ const convertUnicameral = (str, from, to) => {
 
 const convertBicameral = (str, from, to) => {
     const rules = {
-        "anbanismtavruli": {
+        "sasataure": {
             upper: "asomtavruli",
             lower: "mtavruli"
         },
