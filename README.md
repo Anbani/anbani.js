@@ -1,3 +1,11 @@
+# Anbani
+
+[![tests](https://github.com/Anbani/anbani.js/actions/workflows/test.yml/badge.svg)](https://github.com/Anbani/anbani.js/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/Anbani/anbani.js/branch/master/graph/badge.svg)](https://codecov.io/gh/Anbani/anbani.js)
+[![npm](https://img.shields.io/npm/v/anbani)](https://www.npmjs.com/package/anbani)
+[![node](https://img.shields.io/node/v/anbani)](https://www.npmjs.com/package/anbani)
+[![license](https://img.shields.io/npm/l/anbani)](LICENSE)
+
 **Anbani** is a multifunctional toolkit designed for Georgian Alphabet. Main functionalities include text conversion between various Georgian alphabets via `anbani.core` and random text generation via `anbani.lorem`. 
 
 

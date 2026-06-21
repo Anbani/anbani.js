@@ -1,0 +1,31 @@
+# Publishes to npm when a GitHub Release is published.
+#
+# One-time setup:
+#   1. Create an npm automation access token.
+#   2. Add it as the repository secret `NPM_TOKEN`
+#      (Settings -> Secrets and variables -> Actions).
+#
+# `npm publish` runs the `prepublishOnly` script first, which rebuilds the
+# dist/ bundle and runs the test suite, so a stale bundle can never ship.
+name: publish
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+
+      - run: npm install
+
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

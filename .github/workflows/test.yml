@@ -25,5 +25,12 @@ jobs:
       - name: Build UMD bundle
         run: npm run build
 
-      - name: Test
-        run: npm test
+      - name: Test with coverage
+        run: npm run coverage
+
+      - name: Upload coverage to Codecov
+        if: matrix.node-version == '20'
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/lcov.info
+          fail_ci_if_error: false
