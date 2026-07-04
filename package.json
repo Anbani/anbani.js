@@ -2,12 +2,22 @@
   "name": "anbani",
   "version": "2.5.0",
   "description": "Multifunctional javascript toolkit for Georgian Alphabet - Anbani",
-  "module": "src/anbani.mjs",
-  "main": "dist/anbani.js",
+  "type": "module",
+  "module": "./src/anbani.mjs",
+  "main": "./dist/anbani.js",
+  "exports": {
+    ".": {
+      "import": "./src/anbani.mjs",
+      "require": "./dist/anbani.js",
+      "default": "./dist/anbani.js"
+    },
+    "./dist/anbani.js": "./dist/anbani.js",
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "test": "mocha",
     "coverage": "c8 mocha",
-    "build": "webpack --mode=production --node-env=production",
+    "build": "webpack --config webpack.config.cjs --mode=production --node-env=production",
     "bt": "npm run build && npm run test && http-server . -o ./test/index.test.html",
     "md": "nodemon utils/markdown.mjs",
     "prepublishOnly": "npm run build && npm test",
@@ -38,7 +48,7 @@
     "ანბანი"
   ],
   "bin": {
-    "anbani": "bin/app.cjs"
+    "anbani": "./bin/anbani.mjs"
   },
   "author": "georgegach",
   "license": "GPL-3.0-only",
