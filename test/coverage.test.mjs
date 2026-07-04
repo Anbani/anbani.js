@@ -10,6 +10,10 @@ describe("core.convert", function () {
     assert.throws(() => core.convert("abc", "common", "mkhedruli"));
   });
 
+  it("throws an Error on an unsupported target script", function () {
+    assert.throws(() => core.convert("ანბანი", "mkhedruli", "klingon"), Error);
+  });
+
   it("passes through characters not in the alphabet", function () {
     assert.strictEqual(core.convert("ა 1 ბ", "mkhedruli", "asomtavruli"), "Ⴀ 1 Ⴁ");
   });
@@ -30,6 +34,15 @@ describe("utils", function () {
     assert.strictEqual(utils.classifyText("rostevan"), "latin");
     assert.strictEqual(utils.classifyText("привет"), "cyrillic");
     assert.strictEqual(utils.classifyText("ანბანი"), "mkhedruli");
+  });
+
+  it("classifyText detects bicameral co-occurrence", function () {
+    assert.strictEqual(utils.classifyText("Ⴀანბანი"), "shanidziseuli");
+  });
+
+  it("classifyText returns 'unknown' when nothing matches", function () {
+    assert.strictEqual(utils.classifyText("123 ..."), "unknown");
+    assert.strictEqual(utils.classifyText("ანბანabc"), "unknown");
   });
 
   it("cca / fcc round-trip", function () {

@@ -1,3 +1,5 @@
+import { setCharAt } from "./utils.mjs";
+
 const data = {}
 
 
@@ -364,7 +366,7 @@ const createSentences = (words) => {
         sentences += words[i] + randomMark()
     }
     sentences = sentences.trim()
-    sentences = sentences.setCharAt(sentences.length-1, '.', 1)   
+    sentences = setCharAt(sentences, sentences.length-1, '.', 1)
     return sentences
 }
 
@@ -385,13 +387,6 @@ const randomLastName = () => {
     return data.lnames[randomNumber(0, data.lnames.length)]
 }
 
-
-String.prototype.setCharAt = function(where, what, offset) 
-{
-    offset = offset || 0;
-    if(where > this.length-1) return this;
-    return this.substring(0,where) + what + this.substring(where+what.length+offset);
-}
 
 const randomMark = () => {
     let r = Math.random()
