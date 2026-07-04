@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "description": "Cross-language parity vectors, byte-identical in anbani.js and anbani.py. Each vector's `id` names a function; the per-repo consumer (test/golden.test.mjs, tests/test_golden.py) dispatches it to the language-native call, invokes it with `args`, and asserts the result deep-equals `expect` (floats within float_tolerance) or that it throws when `raises` is true. Expected values are generated from anbani.py (the NLP source of truth) and verified against anbani.js in CI.",
+  "float_tolerance": 1e-9,
+  "vectors": [
+    { "id": "core.convert", "note": "unicameral mkhedruli->asomtavruli", "args": ["იყო არაბეთს როსტევან", "mkhedruli", "asomtavruli"], "expect": "ႨႷႭ ႠႰႠႡႤႧႱ ႰႭႱႲႤႥႠႬ" },
+    { "id": "core.convert", "note": "unicameral mkhedruli->mtavruli", "args": ["ანბანი", "mkhedruli", "mtavruli"], "expect": "ᲐᲜᲑᲐᲜᲘ" },
+    { "id": "core.convert", "note": "unicameral mkhedruli->asomtavruli short", "args": ["ანბანი", "mkhedruli", "asomtavruli"], "expect": "ႠႬႡႠႬႨ" },
+    { "id": "core.convert", "note": "mkhedruli->braille (punctuation row)", "args": [".", "mkhedruli", "braille"], "expect": "⠲" },
+    { "id": "core.convert", "note": "braille as source", "args": ["⠁⠃", "braille", "mkhedruli"], "expect": "აბ" },
+    { "id": "core.convert", "note": "bicameral shanidziseuli w/ apostrophe recapitalisation", "args": ["ქართული ა'ნბანი", "mkhedruli", "shanidziseuli"], "expect": "Ⴕართული Ⴀნბანი" },
+    { "id": "core.convert", "note": "bicameral sasataure", "args": ["ქართული ა'ნბანი", "mkhedruli", "sasataure"], "expect": "ႵᲐᲠᲗᲣᲚᲘ ႠᲜᲑᲐᲜᲘ" },
+    { "id": "core.convert", "note": "empty string, bicameral target", "args": ["", "mkhedruli", "sasataure"], "expect": "" },
+    { "id": "core.convert", "note": "unknown source raises", "args": ["ანბანი", "klingon", "mtavruli"], "raises": true },
+    { "id": "core.convert", "note": "unknown target raises", "args": ["ანბანი", "mkhedruli", "klingon"], "raises": true },
+
+    { "id": "core.interpret", "note": "qwerty (latin) auto-detected", "args": ["iyo arabeTs rostevan", "mkhedruli"], "expect": "იყო არაბეთს როსტევან" },
+    { "id": "core.interpret", "note": "qwerty word -> mtavruli", "args": ["anbani", "mtavruli"], "expect": "ᲐᲜᲑᲐᲜᲘ" },
+    { "id": "core.interpret", "note": "bicameral source folded then converted", "args": ["Ⴀა", "asomtavruli"], "expect": "ႠႠ" },
+    { "id": "core.interpret", "note": "undetectable raises", "args": ["12345", "mtavruli"], "raises": true },
+
+    { "id": "core.classify", "note": "leading whitespace, mkhedruli", "args": ["   რა ხდება"], "expect": "mkhedruli" },
+    { "id": "core.classify", "note": "mtavruli", "args": ["ᲐᲜᲑᲐᲜᲘ"], "expect": "mtavruli" },
+    { "id": "core.classify", "note": "asomtavruli", "args": ["Ⴀ"], "expect": "asomtavruli" },
+    { "id": "core.classify", "note": "nuskhuri", "args": ["ⴀ"], "expect": "nuskhuri" },
+    { "id": "core.classify", "note": "latin with quotes", "args": ["'rostevan'"], "expect": "latin" },
+    { "id": "core.classify", "note": "cyrillic", "args": ["привет"], "expect": "cyrillic" },
+    { "id": "core.classify", "note": "bicameral tfileliseuli (mkhedruli+mtavruli)", "args": ["აᲐ"], "expect": "tfileliseuli" },
+    { "id": "core.classify", "note": "bicameral shanidziseuli (mkhedruli+asomtavruli)", "args": ["Ⴀანბანი"], "expect": "shanidziseuli" },
+    { "id": "core.classify", "note": "bicameral sasataure (mtavruli+asomtavruli)", "args": ["ᲐႠ"], "expect": "sasataure" },
+    { "id": "core.classify", "note": "bicameral khutsuri (asomtavruli+nuskhuri)", "args": ["Ⴀⴀ"], "expect": "khutsuri" },
+    { "id": "core.classify", "note": "mixed Georgian+Latin is unknown", "args": ["ანბანabc"], "expect": "unknown" },
+    { "id": "core.classify", "note": "digits are unknown", "args": ["12345"], "expect": "unknown" },
+
+    { "id": "nlp.expand", "args": ["ა. შ."], "expect": "ასე შემდეგ" },
+    { "id": "nlp.contract", "note": "shortest contraction wins", "args": ["ასე შემდეგ"], "expect": "ა.შ." },
+    { "id": "nlp.expand_text", "args": ["ვნახოთ ა. შ."], "expect": "ვნახოთ ასე შემდეგ" },
+    { "id": "nlp.contract_text", "args": ["ვნახოთ ასე შემდეგ"], "expect": "ვნახოთ ა.შ." },
+    { "id": "nlp.expand_text", "note": "fires at word boundary", "args": ["100 ჰა მიწა"], "expect": "100 ჰექტარი მიწა" },
+    { "id": "nlp.expand_text", "note": "never fires inside a word", "args": ["ჰაერი"], "expect": "ჰაერი" },
+    { "id": "nlp.expand_text", "note": "longest key beats its prefix", "args": ["ა.ს.ს.რ."], "expect": "ავტონომიური საბჭოთა სოციალისტური რესპუბლიკა" },
+
+    { "id": "nlp.georgianise", "note": "fast letters", "args": ["gamarjoba", "fast"], "expect": "გამარჯობა" },
+    { "id": "nlp.georgianise", "note": "fast diphthongs", "args": ["shromis chkhikvi", "fast"], "expect": "შრომის ჩხიკვი" },
+    { "id": "nlp.georgianise", "note": "balanced word", "args": ["kartuli ena", "balanced"], "expect": "ქართული ენა" },
+    { "id": "nlp.georgianise", "note": "balanced multi-sentence w/ capitals (chevron \\w path)", "args": ["Gamarjoba msoflio. Rogora khar?", "balanced"], "expect": "გამარჯობა მსოფლიო. როგორა ხარ?" },
+    { "id": "nlp.latinise", "args": ["გამარჯობა"], "expect": "gamarjoba" },
+
+    { "id": "nlp.word_tokenize", "args": ["გამარჯობა, მსოფლიო!"], "expect": ["გამარჯობა", "მსოფლიო"] },
+    { "id": "nlp.word_tokenize", "note": "lowercases mtavruli->mkhedruli", "args": ["ᲒᲐᲛᲐᲠᲯᲝᲑᲐ"], "expect": ["გამარჯობა"] },
+    { "id": "nlp.sentence_tokenize", "args": ["გ ა. ბ გ."], "expect": [["გ", "ა"], ["ბ", "გ"]] },
+    { "id": "nlp.sentence_tokenize", "note": "? ! normalised to terminators", "args": ["ა ბ! გ დ?"], "expect": [["ა", "ბ"], ["გ", "დ"]] },
+    { "id": "nlp.paragraph_tokenize", "args": ["გ ა\nბ გ"], "expect": [["გ", "ა"], ["ბ", "გ"]] },
+    { "id": "nlp.cleanup", "args": ["გ,  ა!"], "expect": "გ, ა!" },
+
+    { "id": "toolkit.count", "args": ["აბ ბ"], "expect": { "Ა": 1, "Ბ": 2 } },
+    { "id": "toolkit.frequency", "note": "denominator is full length incl. spaces", "args": ["აბ ბ"], "expect": { "Ა": 0.25, "Ბ": 0.5 } },
+    { "id": "toolkit.friedman", "args": ["ააბ"], "expect": 0.3333333333333333 },
+    { "id": "toolkit.friedman", "note": "index of coincidence", "args": ["იყო არაბეთს როსტევან მეფე ღმრთისაგან სვიანი"], "expect": 0.06116642958748222 }
+  ]
+}

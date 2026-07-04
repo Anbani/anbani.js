@@ -10,6 +10,10 @@ const convert = (str, from, to) => {
 }
 
 const interpret = (str, to) => {
+    // Match anbani.py: refuse text whose source script can't be identified
+    // (mixed scripts, digits, empty) instead of silently passing it through.
+    if (str != null && classifyText(str) === "unknown")
+        throw new Error("Could not detect the source script of the given text.")
     let dir = { to }
     checkForAliases(dir)
     if (str != null)
