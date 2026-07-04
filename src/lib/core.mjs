@@ -64,7 +64,7 @@ const convertBicameral = (str, from, to) => {
     converted = toUpperCase(converted, lowerScript, upperScript);
 
     // Letters after punctuation 
-    let matched = converted.match(/[?.!]\s+[A-zႠ-ჰⴀ-ⴠᲐ-Ჰ0-9]/g);
+    let matched = converted.match(/[?.!]\s+[A-Za-zႠ-ჰⴀ-ⴠᲐ-Ჰ0-9]/g);
     if (matched != null)
         for (let i = 0; i < matched.length; i++) {
             converted = converted.setCharAt(
