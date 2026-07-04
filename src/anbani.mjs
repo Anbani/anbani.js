@@ -3,6 +3,12 @@ import lorem from "./lib/lorem.mjs";
 import toolkit from "./lib/toolkit.mjs";
 import data from "./lib/data.mjs";
 import utils from "./lib/utils.mjs";
+import contractions from "./lib/contractions.mjs";
+import georgianisation from "./lib/georgianisation.mjs";
+import preprocessing from "./lib/preprocessing.mjs";
+
+// Natural-language utilities, mirroring anbani.py's `anbani.nlp` package.
+const nlp = { contractions, georgianisation, preprocessing };
 
 core.$ = {classifyText : utils.classifyText}
 let scripts = Object.keys(data.alphabets).slice(0,4)
@@ -27,9 +33,9 @@ let ab = {
 
 // Abstract anbani
 const anbani = {
-    core, lorem, toolkit, data, utils, ab
+    core, lorem, toolkit, data, utils, ab, nlp
 };
 
 
-export {core, lorem, toolkit, data, utils, ab}
+export {core, lorem, toolkit, data, utils, ab, nlp}
 export default anbani

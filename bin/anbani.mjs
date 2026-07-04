@@ -24,13 +24,33 @@ const commands = {
   lorem([nwords = "8"]) {
     console.log(anbani.lorem.sentences(parseInt(nwords, 10)));
   },
+  // georgianise <text> [mode=balanced]
+  georgianise([text, mode = "balanced"]) {
+    console.log(anbani.nlp.georgianisation.georgianise(text, mode));
+  },
+  // latinise <text>
+  latinise([text]) {
+    console.log(anbani.nlp.georgianisation.latinise(text));
+  },
+  // expand <text>
+  expand([text]) {
+    console.log(anbani.nlp.contractions.expandText(text));
+  },
+  // contract <text>
+  contract([text]) {
+    console.log(anbani.nlp.contractions.contractText(text));
+  },
   help() {
     console.log(
       "Usage: anbani <command> ...\n" +
-        "  convert   <text> <from> <to>\n" +
-        "  interpret <text> [to=mtavruli]\n" +
-        "  lorem     [words=8]\n" +
-        "  <text> [to]            (shorthand for: interpret <text> [to])"
+        "  convert     <text> <from> <to>\n" +
+        "  interpret   <text> [to=mtavruli]\n" +
+        "  georgianise <text> [mode=balanced|fast]\n" +
+        "  latinise    <text>\n" +
+        "  expand      <text>\n" +
+        "  contract    <text>\n" +
+        "  lorem       [words=8]\n" +
+        "  <text> [to]              (shorthand for: interpret <text> [to])"
     );
   },
 };
