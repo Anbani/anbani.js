@@ -88,11 +88,22 @@ describe("tui converter", function () {
   });
 
   it("swap on a non-source target toasts and does not change state", function () {
-    let s = feed(app.initialState(), [CH("m")]); // manual, to=mtavruli (not a source)
+    // manual mode, then cycle `to` to a non-source target (homoglyph)
+    let s = feed(app.initialState(), [CH("m"), CH("o"), CH("o"), CH("o")]);
+    assert.strictEqual(s.screens.converter.to, "homoglyph");
     const before = { from: s.screens.converter.from, to: s.screens.converter.to };
     s = feed(s, [CH("s")]);
     assert.ok(s.toast && /cannot swap/.test(s.toast.text));
     assert.deepStrictEqual({ from: s.screens.converter.from, to: s.screens.converter.to }, before);
+  });
+
+  it("swap on a valid source target succeeds", function () {
+    // to=nuskhuri (a source) via two `o` cycles from mtavruli
+    let s = feed(app.initialState(), [CH("m"), CH("o"), CH("o")]);
+    assert.strictEqual(s.screens.converter.to, "nuskhuri");
+    s = feed(s, [CH("s")]);
+    assert.strictEqual(s.screens.converter.from, "nuskhuri");
+    assert.strictEqual(s.screens.converter.to, "mkhedruli");
   });
 });
 
