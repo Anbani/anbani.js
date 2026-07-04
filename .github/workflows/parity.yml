@@ -1,0 +1,53 @@
+# Byte-identity guard for files shared with the sibling library anbani.py.
+# These files are copied verbatim between the two repos; this job fails if they
+# drift. For a coordinated change to a shared file (landing in both repos at
+# once), add the `parity-pending` label to skip this job while the pair is
+# in flight.
+name: parity
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  parity:
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.pull_request.labels.*.name, 'parity-pending') }}
+    steps:
+      - name: Checkout self (anbani.js)
+        uses: actions/checkout@v4
+        with:
+          path: self
+
+      - name: Checkout sibling (anbani.py default branch)
+        uses: actions/checkout@v4
+        with:
+          repository: Anbani/anbani.py
+          path: sibling
+
+      - name: Byte-compare shared files
+        shell: bash
+        run: |
+          # self path (this repo)  ->  sibling path (anbani.py)
+          pairs="
+          src/lib/data.mjs|anbani/data/letters.js
+          data/georgian_contractions.csv|anbani/data/georgian_contractions.csv
+          data/ambigram_nc5_len7.csv|anbani/data/ambigram_nc5_len7.csv
+          spec/golden.json|spec/golden.json
+          "
+          fail=0
+          while IFS='|' read -r a b; do
+            [ -z "$a" ] && continue
+            if [ ! -f "sibling/$b" ]; then
+              echo "::warning::sibling missing anbani.py:$b — skipping (bootstrap window)"
+              continue
+            fi
+            if cmp -s "self/$a" "sibling/$b"; then
+              echo "ok: $a == anbani.py:$b"
+            else
+              echo "::error::DRIFT: $a differs from anbani.py:$b"
+              fail=1
+            fi
+          done <<< "$pairs"
+          exit $fail
