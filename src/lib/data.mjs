@@ -288,14 +288,6 @@ export default {
         // See also http://transliteration.eki.ee/pdf/Georgian.pdf
     },
 
-    start: {
-        mkhedruli: 4304,
-        mtavruli: 7312,
-        asomtavruli: 4256,
-        nuskhuri: 11520,
-        latin: 97
-    },
-
     regex: {
         mkhedruli: /[ა-ჿ]/,
         mtavruli: /[Ა-Ჿ]/,
