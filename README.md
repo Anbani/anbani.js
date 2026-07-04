@@ -59,6 +59,10 @@ anbani
   │  ├─ friedman [Function]
   │  ├─ frequency [Function]
   │  └─ count [Function]
+  ├─ nlp
+  │  ├─ contractions   { expand, expandText, contract, contractText }
+  │  ├─ georgianisation { georgianise, latinise }
+  │  └─ preprocessing  { wordTokenize, sentenceTokenize, paragraphTokenize, cleanup }
   └─ data
     ├─ ab
     │  ├─ mkhedruli [String]
@@ -270,8 +274,41 @@ console.log(`The given text is in '${anbani.core.$.classifyText(converted)}' sty
 
 ````
 
+## NLP
+Ported from [anbani.py](https://github.com/Anbani/anbani.py): expand/contract Georgian abbreviations, georgianise sloppy qwerty into Georgian, latinise back, and tokenize.
+```javascript
+anbani.nlp.contractions.expandText("ვნახოთ ა. შ.")
+// 'ვნახოთ ასე შემდეგ'
+
+anbani.nlp.georgianisation.georgianise("gamarjoba")          // default 'balanced'
+// 'გამარჯობა'
+anbani.nlp.georgianisation.georgianise("gamarjoba", "fast")  // no ngram table
+
+anbani.nlp.preprocessing.wordTokenize("გამარჯობა, მსოფლიო!")
+// ['გამარჯობა', 'მსოფლიო']
+```
+`georgianise`'s `balanced` mode uses a ~400KB ngram table that ships for Node only; in the browser bundle it throws (use `fast`). `accurate` mode is a Python-only extra.
+
+## Command line
+Installing the package also installs an `anbani` command:
+```bash
+anbani interpret "gamarjoba"                      # -> ᲒᲐᲛᲐᲠᲯᲝᲑᲐ
+anbani convert "ანბანი" mkhedruli asomtavruli
+anbani georgianise "gamarjoba"
+anbani expand "ვნახოთ ა. შ."
+anbani lorem 8
+```
+
+## Parity with anbani.py
+anbani.js and [anbani.py](https://github.com/Anbani/anbani.py) share one behavior contract, proved in CI by the byte-identical `spec/golden.json` both test suites run. Feature-equivalent as of 3.0; the only intentional gaps are the browser/UMD bundle (js-only) and `ebook2text` (Python-only).
+
+## 3.0 — breaking changes
+- Package is now GPL-3.0 (was MIT); ESM by default (`"type":"module"` + `exports` map) — deep imports of `src/lib/*` are no longer allowed, use the public API.
+- `core.convert` / `core.interpret` **throw** an `Error` on an unsupported source or target (was a silent passthrough).
+- `core.interpret` throws when the source script can't be detected (mixed / undetectable input); `utils.classifyText` returns `"unknown"` there and reports the four bicameral scripts.
+
 # What else
-The code is under MIT license, freely distributed for anyone who wants to use it (just don't forget to mention the source). 
+The code is under the GPL-3.0 license, freely distributed for anyone who wants to use it (just don't forget to mention the source). 
 
 Pull requests and collabs are most welcome!
 
