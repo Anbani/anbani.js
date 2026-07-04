@@ -40,6 +40,15 @@ const commands = {
   contract([text]) {
     console.log(anbani.nlp.contractions.contractText(text));
   },
+  // tui  (interactive terminal UI)
+  async tui() {
+    if (process.stdin.isTTY && process.stdout.isTTY) {
+      const { run } = await import("../src/tui/app.mjs");
+      process.exit(await run());
+    }
+    console.error("error: anbani tui requires an interactive terminal");
+    process.exit(2);
+  },
   help() {
     console.log(
       "Usage: anbani <command> ...\n" +
@@ -50,12 +59,17 @@ const commands = {
         "  expand      <text>\n" +
         "  contract    <text>\n" +
         "  lorem       [words=8]\n" +
+        "  tui                      (interactive UI)\n" +
         "  <text> [to]              (shorthand for: interpret <text> [to])"
     );
   },
 };
 
 if (!cmd) {
+  if (process.stdin.isTTY && process.stdout.isTTY) {
+    const { run } = await import("../src/tui/app.mjs");
+    process.exit(await run());
+  }
   commands.help();
 } else if (Object.prototype.hasOwnProperty.call(commands, cmd)) {
   try {

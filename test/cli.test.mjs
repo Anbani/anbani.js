@@ -35,4 +35,23 @@ describe("cli", function () {
   it("an unsupported target exits non-zero", function () {
     assert.throws(() => run("convert", "ა", "mkhedruli", "klingon"));
   });
+
+  it("no-arg over a pipe still prints usage (non-TTY)", function () {
+    assert.ok(run().startsWith("Usage:"));
+  });
+
+  it("help lists the tui command", function () {
+    assert.ok(run("help").includes("tui"));
+  });
+
+  it("`tui` over a pipe refuses with a clear error", function () {
+    let threw = false;
+    try {
+      execFileSync("node", [bin, "tui"], { encoding: "utf-8" });
+    } catch (e) {
+      threw = true;
+      assert.ok(String(e.stderr).includes("interactive terminal"));
+    }
+    assert.ok(threw, "expected `tui` to exit non-zero over a pipe");
+  });
 });

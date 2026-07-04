@@ -299,6 +299,35 @@ anbani expand "ვნახოთ ა. შ."
 anbani lorem 8
 ```
 
+## Interactive TUI
+
+New in 3.1: a full-screen terminal UI. Launch it with `anbani tui`, or just run
+`anbani` with no arguments inside a terminal (piped/non-TTY use still prints the
+usage help). Zero extra dependencies — it is hand-rolled ANSI.
+
+```bash
+anbani tui
+```
+
+Five tabs, switch with `1`–`5` or `tab` / `shift+tab`:
+
+| Tab | What it does |
+|-----|--------------|
+| **Converter** | live transliteration; `m` toggles auto/manual, `f`/`o` pick source/target, `s` swaps |
+| **Alphabet** | letter grid + detail card; `hjkl` to move, `c` cycles script, `a` toggles archaic, `enter` copies |
+| **Lorem** | fake Georgian text; `k` kind, `+`/`-` amount, `g` generate |
+| **NLP** | georgianise / latinise / expand / contract; `m` mode, `b` georgianise level |
+| **Toolkit** | letter-frequency bars + Friedman index of coincidence |
+
+Global keys: `?` help overlay · `i`/`enter` edit · `y` copy (via OSC 52) ·
+`q` or `ctrl+c` quit. Minimum terminal size is 60×16.
+
+Notes:
+- No Georgian keyboard? Pick `from: qwerty` in the Converter (type Latin, get
+  Georgian), or paste — bracketed paste is supported in edit mode.
+- Copy uses OSC 52; some terminals block it, in which case the copy silently does
+  nothing.
+
 ## Parity with anbani.py
 anbani.js and [anbani.py](https://github.com/Anbani/anbani.py) share one behavior contract, proved in CI by the byte-identical `spec/golden.json` both test suites run. Feature-equivalent as of 3.0; the only intentional gaps are the browser/UMD bundle (js-only) and `ebook2text` (Python-only).
 
