@@ -10,7 +10,6 @@
     "build": "webpack --mode=production --node-env=production",
     "bt": "npm run build && npm run test && http-server . -o ./test/index.test.html",
     "md": "nodemon utils/markdown.mjs",
-    "play": "nodemon utils/playground.mjs",
     "prepublishOnly": "npm run build && npm test",
     "release": "npm publish"
   },
@@ -42,7 +41,7 @@
     "anbani": "bin/app.cjs"
   },
   "author": "georgegach",
-  "license": "MIT",
+  "license": "GPL-3.0-only",
   "devDependencies": {
     "c8": "^10.1.3",
     "http-server": "^14.1.1",

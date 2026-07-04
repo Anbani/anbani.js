@@ -1,5 +1,5 @@
 import data from "./data.mjs";
-import { checkForAliases, classifyText, checkForDirection, isBicameral, toUpperCase, detectAlphabet } from "./utils.mjs";
+import { checkForAliases, classifyText, checkForDirection, isBicameral, toUpperCase, detectAlphabet, setCharAt } from "./utils.mjs";
 
 
 const convert = (str, from, to) => {
@@ -67,7 +67,8 @@ const convertBicameral = (str, from, to) => {
     let matched = converted.match(/[?.!]\s+[A-Za-zႠ-ჰⴀ-ⴠᲐ-Ჰ0-9]/g);
     if (matched != null)
         for (let i = 0; i < matched.length; i++) {
-            converted = converted.setCharAt(
+            converted = setCharAt(
+                converted,
                 converted.indexOf(matched[i]),
                 matched[i].substring(0, matched[i].length - 1)
                     .concat(toUpperCase(
@@ -82,8 +83,9 @@ const convertBicameral = (str, from, to) => {
     matched = converted.match(/[Ⴀ-ჰⴀ-ⴠᲐ-Ჰ]\'/g);
     if (matched != null)
         for (let i = 0; i < matched.length; i++) {
-            converted = converted.setCharAt(
-                converted.indexOf(matched[i]), 
+            converted = setCharAt(
+                converted,
+                converted.indexOf(matched[i]),
                 toUpperCase(matched[i][0], lowerScript, upperScript),
             1);
         }

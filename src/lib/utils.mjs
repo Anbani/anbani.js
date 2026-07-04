@@ -44,13 +44,18 @@ export const checkForDirection = (dir) => {
         "qwerty",
         "braille",
     ];
+    // Every alphabet key is a valid target, plus the four bicameral scripts.
     let permitted_to = [
-        //    everything is permitted
+        ...Object.keys(data.alphabets),
+        "khutsuri",
+        "shanidziseuli",
+        "tfileliseuli",
+        "sasataure",
     ];
     if (permitted_from.indexOf(dir.from) == -1)
-        throw `Text conversion from '${dir.from}' is not supported.`;
-    // if (permitted_to.indexOf(dir.to) == -1)
-    //     throw `Text conversion to '${dir.to}' is not supported.`;
+        throw new Error(`Text conversion from '${dir.from}' is not supported.`);
+    if (permitted_to.indexOf(dir.to) == -1)
+        throw new Error(`Text conversion to '${dir.to}' is not supported.`);
 };
 
 export const isUnsupported = (str) => {
@@ -63,18 +68,16 @@ export const isBicameral = (to) => {
     return to == "tfileliseuli" || to == "shanidziseuli" || to == "khutsuri" || to == "sasataure";
 };
 
-String.prototype.setCharAt = function (where, what, offset) {
-    offset = offset || 0;
-    if (where > this.length - 1) return this;
-    return (
-        this.substring(0, where) + what + this.substring(where + what.length + offset)
-    );
+// Pure replacement for the old String.prototype.setCharAt monkey-patch.
+export const setCharAt = (str, where, what, offset = 0) => {
+    if (where > str.length - 1) return str;
+    return str.substring(0, where) + what + str.substring(where + what.length + offset);
 };
 
 export const toUpperCase = (word, from, to) => {
     let char = data.alphabets[to][data.alphabets[from].indexOf(word[0])];
     char = char == undefined ? word[0] : char;
-    return word.setCharAt(0, char);
+    return setCharAt(word, 0, char);
 };
 
 export const detectAlphabet = (str, idx) => {
@@ -137,7 +140,7 @@ export const classifyText = (str) => {
     if (isSame(vector, [false, false, false, false, false, true]))
         return "cyrillic";
 
-    return vector;
+    return "unknown";
 };
 
 // Char Code At
@@ -154,4 +157,4 @@ export const isSame = (b1, b2) => {
     return true;
 };
 
-export default { checkForAliases, checkForDirection, isUnsupported, isBicameral, toUpperCase, detectAlphabet, classifyText, cca, fcc, isSame };
+export default { checkForAliases, checkForDirection, setCharAt, isUnsupported, isBicameral, toUpperCase, detectAlphabet, classifyText, cca, fcc, isSame };
