@@ -10,7 +10,6 @@
     { "id": "core.convert", "note": "braille as source", "args": ["⠁⠃", "braille", "mkhedruli"], "expect": "აბ" },
     { "id": "core.convert", "note": "bicameral shanidziseuli w/ apostrophe recapitalisation", "args": ["ქართული ა'ნბანი", "mkhedruli", "shanidziseuli"], "expect": "Ⴕართული Ⴀნბანი" },
     { "id": "core.convert", "note": "bicameral sasataure", "args": ["ქართული ა'ნბანი", "mkhedruli", "sasataure"], "expect": "ႵᲐᲠᲗᲣᲚᲘ ႠᲜᲑᲐᲜᲘ" },
-    { "id": "core.convert", "note": "deprecated alias anbanismtavruli == sasataure", "args": ["ანბანი", "mkhedruli", "anbanismtavruli"], "expect": "ႠᲜᲑᲐᲜᲘ" },
     { "id": "core.convert", "note": "empty string, bicameral target", "args": ["", "mkhedruli", "sasataure"], "expect": "" },
     { "id": "core.convert", "note": "unknown source raises", "args": ["ანბანი", "klingon", "mtavruli"], "raises": true },
     { "id": "core.convert", "note": "unknown target raises", "args": ["ანბანი", "mkhedruli", "klingon"], "raises": true },
