@@ -232,14 +232,12 @@ export function solidFrame(size, style, bgToken) {
   return ui.frame(frame, C, R);
 }
 
-// e-ink page-refresh: flash paper/ink a few times, ghost a negative, then settle.
+// e-ink page-refresh: one deliberate blink, ghost a negative, then hold ~2s.
 export const SPLASH_PHASES = [
-  { solid: "textMajor", ms: 55 }, // white flash
-  { solid: "appBg", ms: 55 },     // black flash
-  { solid: "textMajor", ms: 55 }, // white flash
-  { solid: "appBg", ms: 45 },     // black flash
-  { invert: true, ms: 120 },      // ghost negative
-  { invert: false, ms: 520 },     // settle positive (hold)
+  { solid: "textMajor", ms: 140 }, // white flash  ┐ one blink
+  { solid: "appBg", ms: 140 },     // black flash  ┘
+  { invert: true, ms: 180 },       // ghost negative
+  { invert: false, ms: 2000 },     // loading screen (hold ~2s)
 ];
 
 // ---- runtime loop ----------------------------------------------------------
