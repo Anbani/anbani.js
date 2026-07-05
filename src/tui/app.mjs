@@ -197,16 +197,11 @@ export const SPLASH_ART = [
   "⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣿⣿⠀⣿⣿⠀⠀⣿⣿⠀",
 ];
 
-// The wordmark screen. `invert` swaps ink/paper (blue-on-white) for the e-ink
-// "negative" phase; normally it is white-on-blue with a mustard tagline.
-export function splashFrame(size, style, opts = {}) {
-  const invert = !!opts.invert;
+// The wordmark screen: white ANBANI on a black backdrop, centered.
+export function splashFrame(size, style) {
   const C = size.cols;
   const R = size.rows;
-  const bgToken = invert ? "textMajor" : "accent";
-  const artFg = invert ? "accent" : "textOnHero";
-  const tagFg = invert ? "accent" : "warn";
-  const bg = style.on ? style.bg(bgToken) : "";
+  const bg = style.on ? style.bg("appBg") : "";
   const rst = style.on ? style.reset() : "";
   const fill = (plain, fgTok) => (style.on ? bg + (fgTok ? style.fg(fgTok) : "") + plain + rst : plain);
 
@@ -214,31 +209,15 @@ export function splashFrame(size, style, opts = {}) {
   const total = SPLASH_ART.length + 2;
   const top = Math.max(0, Math.floor((R - total) / 2));
   for (let i = 0; i < top; i++) body.push(fill(ui.blank(C)));
-  for (const line of SPLASH_ART) body.push(fill(ui.center(line, C), artFg));
+  for (const line of SPLASH_ART) body.push(fill(ui.center(line, C), "textOnHero"));
   body.push(fill(ui.blank(C)));
-  body.push(fill(ui.center(`v${VERSION} · loading…`, C), tagFg));
+  body.push(fill(ui.center(`v${VERSION} · loading…`, C), "textMinor"));
   const frame = [];
   for (let i = 0; i < R; i++) frame.push(i < body.length ? body[i] : fill(ui.blank(C)));
   return ui.frame(frame, C, R);
 }
 
-// A flat colour wash — the "flash" phases of an e-ink refresh.
-export function solidFrame(size, style, bgToken) {
-  const C = size.cols;
-  const R = size.rows;
-  const line = style.on ? style.bg(bgToken) + " ".repeat(C) + style.reset() : " ".repeat(C);
-  const frame = [];
-  for (let i = 0; i < R; i++) frame.push(line);
-  return ui.frame(frame, C, R);
-}
-
-// e-ink page-refresh: one deliberate blink, ghost a negative, then hold ~2s.
-export const SPLASH_PHASES = [
-  { solid: "textMajor", ms: 140 }, // white flash  ┐ one blink
-  { solid: "appBg", ms: 140 },     // black flash  ┘
-  { invert: true, ms: 180 },       // ghost negative
-  { invert: false, ms: 2000 },     // loading screen (hold ~2s)
-];
+const SPLASH_MS = 2000;
 
 // ---- runtime loop ----------------------------------------------------------
 
@@ -283,14 +262,11 @@ export async function run(opts = {}) {
     } catch (_) {}
   }
 
-  const writeFrame = (lines) => {
+  const paintSplash = () => {
+    const lines = splashFrame(term.size(), style);
     let frame = CUR_HIDE;
     for (let i = 0; i < lines.length; i++) frame += moveTo(i + 1, 1) + lines[i] + EL;
     term.write(frame);
-  };
-  const drawPhase = (ph) => {
-    const size = term.size();
-    writeFrame(ph.solid ? solidFrame(size, style, ph.solid) : splashFrame(size, style, { invert: ph.invert }));
   };
 
   return await new Promise((resolve) => {
@@ -326,22 +302,15 @@ export async function run(opts = {}) {
       startApp();
     };
 
-    // e-ink refresh phases; any key skips straight to the app
-    let idx = 0;
-    const tick = () => {
-      if (done) return;
-      if (idx >= SPLASH_PHASES.length) return finish();
-      const ph = SPLASH_PHASES[idx++];
-      drawPhase(ph);
-      timer = setTimeout(tick, ph.ms);
-    };
+    // show the wordmark for ~2s; any key skips straight to the app
     term.onKey(() => finish());
     term.onPaste(() => {});
     term.onResize(() => {
-      if (!done && idx > 0) drawPhase(SPLASH_PHASES[idx - 1]);
+      if (!done) paintSplash();
     });
     term.start();
-    tick();
+    paintSplash();
+    timer = setTimeout(finish, SPLASH_MS);
   });
 }
 

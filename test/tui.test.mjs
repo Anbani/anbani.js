@@ -180,22 +180,14 @@ describe("tui toolkit", function () {
   });
 });
 
-describe("tui splash (e-ink refresh)", function () {
-  it("wordmark, negative, and solid flashes all fill the screen", function () {
+describe("tui splash", function () {
+  it("black-background wordmark fills the screen", function () {
     for (const size of [SIZE, { cols: 100, rows: 30 }, { cols: 62, rows: 18 }]) {
-      const frames = [
-        app.splashFrame(size, styleOff),
-        app.splashFrame(size, styleOff, { invert: true }),
-        app.solidFrame(size, styleOff, "textMajor"),
-        app.solidFrame(size, styleOff, "appBg"),
-      ];
-      for (const lines of frames) {
-        assert.strictEqual(lines.length, size.rows);
-        for (const l of lines) assert.strictEqual(width(l), size.cols);
-      }
+      const lines = app.splashFrame(size, styleOff);
+      assert.strictEqual(lines.length, size.rows);
+      for (const l of lines) assert.strictEqual(width(l), size.cols);
     }
     assert.ok(app.splashFrame(SIZE, styleOff).join("\n").includes("loading…"));
-    assert.ok(app.SPLASH_PHASES.length >= 4);
   });
 });
 
