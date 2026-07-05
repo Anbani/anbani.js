@@ -186,6 +186,36 @@ export function render(state, size, style) {
   return ui.frame(all, C, R);
 }
 
+// ---- splash ----------------------------------------------------------------
+
+// Braille "ANBANI" wordmark shown while the app starts.
+export const SPLASH_ART = [
+  "⠀⣿⣿⣿⣿⣤⠀⣿⣿⣿⣿⣿⣿⠀⠀⣿⣤⣤⠀⠀⠀⠀⣿⣿⣿⣿⣤⠀⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣿⣿⠀",
+  "⠀⠀⠀⠀⣿⣿⠀⣿⣿⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⣿⣿⠀⠀⠀⠀⠀⣿⣿⠀⠀⣿⣿⠀",
+  "⠀⠀⠀⠀⣿⣿⠀⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⣿⣿⠀⣿⣿⣿⣿⣿⣿⠀⣿⣿⠀⠀⣿⣿⠀",
+  "⣤⣤⠀⠀⣿⣿⠀⣿⣿⠀⠀⣿⣿⠀⣿⣿⠀⠀⣿⣿⠀⣤⣤⠀⠀⣿⣿⠀⣿⣿⠀⠀⣿⣿⠀⣿⣿⠀⠀⣿⣿⠀",
+  "⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣿⣿⠀⣿⣿⠀⠀⣿⣿⠀",
+];
+
+export function splashFrame(size, style) {
+  const C = size.cols;
+  const R = size.rows;
+  const body = [];
+  const total = SPLASH_ART.length + 2;
+  const top = Math.max(0, Math.floor((R - total) / 2));
+  for (let i = 0; i < top; i++) body.push(ui.blank(C));
+  for (const line of SPLASH_ART) {
+    const centered = ui.center(line, C);
+    body.push(style.on ? style.fg("accent") + centered + style.reset() : centered);
+  }
+  body.push(ui.blank(C));
+  const tag = ui.center(`v${VERSION} · loading…`, C);
+  body.push(style.on ? style.fg("textMinor") + tag + style.reset() : tag);
+  return ui.frame(body, C, R);
+}
+
+const SPLASH_MS = 1000;
+
 // ---- runtime loop ----------------------------------------------------------
 
 export async function run(opts = {}) {
@@ -229,27 +259,54 @@ export async function run(opts = {}) {
     } catch (_) {}
   }
 
+  const paintSplash = () => {
+    const lines = splashFrame(term.size(), style);
+    let frame = CUR_HIDE;
+    for (let i = 0; i < lines.length; i++) frame += moveTo(i + 1, 1) + lines[i] + EL;
+    term.write(frame);
+  };
+
   return await new Promise((resolve) => {
     const quit = (code) => {
       term.stop();
       resolve(code);
     };
-    term.onKey((ev) => {
-      state = update(state, ev, ctx);
-      if (state.quit) return quit(0);
+
+    const startApp = () => {
+      term.onKey((ev) => {
+        state = update(state, ev, ctx);
+        if (state.quit) return quit(0);
+        paint();
+      });
+      term.onPaste((text) => {
+        state = update(state, { type: "paste", text }, ctx);
+        paint();
+      });
+      term.onResize(() => {
+        const sz = term.size();
+        state = update(state, { type: "resize", cols: sz.cols, rows: sz.rows }, ctx);
+        paint();
+      });
       paint();
-    });
-    term.onPaste((text) => {
-      state = update(state, { type: "paste", text }, ctx);
-      paint();
-    });
+    };
+
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      startApp();
+    };
+
+    // splash phase: any key or a timeout dismisses it
+    term.onKey(() => finish());
+    term.onPaste(() => {});
     term.onResize(() => {
-      const sz = term.size();
-      state = update(state, { type: "resize", cols: sz.cols, rows: sz.rows }, ctx);
-      paint();
+      if (!done) paintSplash();
     });
     term.start();
-    paint();
+    paintSplash();
+    const timer = setTimeout(finish, SPLASH_MS);
   });
 }
 

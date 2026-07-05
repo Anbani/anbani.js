@@ -180,6 +180,17 @@ describe("tui toolkit", function () {
   });
 });
 
+describe("tui splash", function () {
+  it("fills the screen at multiple sizes", function () {
+    for (const size of [SIZE, { cols: 100, rows: 30 }, { cols: 62, rows: 18 }]) {
+      const lines = app.splashFrame(size, styleOff);
+      assert.strictEqual(lines.length, size.rows);
+      for (const l of lines) assert.strictEqual(width(l), size.cols);
+    }
+    assert.ok(app.splashFrame(SIZE, styleOff).join("\n").includes("loading…"));
+  });
+});
+
 describe("tui packaging guard", function () {
   it("browser entry does not import the TUI", function () {
     const dir = path.dirname(fileURLToPath(import.meta.url));
