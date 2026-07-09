@@ -15,6 +15,10 @@ name: publish
 on:
   release:
     types: [published]
+  # Manual escape hatch: a release whose tag predates a fix to this workflow can't
+  # be re-run against the fixed version, since the release event replays the
+  # workflow file as it existed at the tag. Dispatch from the default branch instead.
+  workflow_dispatch:
 
 jobs:
   npm:
@@ -25,13 +29,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # OIDC trusted publishing needs npm >= 11.5.1. Node 24 bundles npm 11.16,
+      # so take it from the runtime rather than self-upgrading npm in place —
+      # `npm install -g npm@latest` overwrites the running npm and leaves it
+      # unable to resolve its own deps ("Cannot find module 'sigstore'").
+      # (npm 12 also requires Node >= 22.22, so it can't install on Node 20 at all.)
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
           registry-url: "https://registry.npmjs.org"
-
-      # Node 20 ships npm 10; OIDC trusted publishing needs npm >= 11.5.1.
-      - run: npm install -g npm@latest
 
       - run: npm install
 
