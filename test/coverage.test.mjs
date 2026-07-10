@@ -59,11 +59,6 @@ describe("utils", function () {
     assert.ok(!utils.isBicameral("mkhedruli"));
   });
 
-  it("isUnsupported flags cyrillic only", function () {
-    assert.ok(utils.isUnsupported("привет"));
-    assert.ok(!utils.isUnsupported("ანბანი"));
-  });
-
   it("detectAlphabet", function () {
     assert.strictEqual(utils.detectAlphabet("ანბანი", 5), "mkhedruli");
     assert.strictEqual(utils.detectAlphabet("abc", 2), "qwerty");

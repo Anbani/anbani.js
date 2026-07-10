@@ -58,12 +58,6 @@ export const checkForDirection = (dir) => {
         throw new Error(`Text conversion to '${dir.to}' is not supported.`);
 };
 
-export const isUnsupported = (str) => {
-    return [data.regex.cyrillic.test(str)].some(
-        (testResult) => testResult == true
-    );
-};
-
 export const isBicameral = (to) => {
     return to == "tfileliseuli" || to == "shanidziseuli" || to == "khutsuri" || to == "sasataure";
 };
@@ -96,6 +90,10 @@ export const detectAlphabet = (str, idx) => {
     return detectAlphabet(str, idx - 1);
 };
 
+// Names the source script of a run: one of the ten script names for a pure or
+// recognised bicameral run, or "unknown" for empty/mixed/undetectable input.
+// Always returns a string — the boolean `vector` below is internal scratch and
+// is never returned (pre-3.0 versions leaked it; 3.x does not).
 export const classifyText = (str) => {
     /* MATCHES ALPHABETS [Mkhedruli, Mtavruli, Asomtavruli, Nuskhuri, Latin, Cyrillic] */
     let vector = [
@@ -157,4 +155,4 @@ export const isSame = (b1, b2) => {
     return true;
 };
 
-export default { checkForAliases, checkForDirection, setCharAt, isUnsupported, isBicameral, toUpperCase, detectAlphabet, classifyText, cca, fcc, isSame };
+export default { checkForAliases, checkForDirection, setCharAt, isBicameral, toUpperCase, detectAlphabet, classifyText, cca, fcc, isSame };

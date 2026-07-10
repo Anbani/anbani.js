@@ -11,22 +11,38 @@ const convert = (str, from, to) => {
 
 const interpret = (str, to) => {
     // Match anbani.py: refuse text whose source script can't be identified
-    // (mixed scripts, digits, empty) instead of silently passing it through.
-    if (str != null && classifyText(str) === "unknown")
+    // (null/undefined, mixed scripts, digits, empty) instead of passing it
+    // through. The explicit null check matters — regex.test(null) coerces to
+    // the string "null" and would misclassify as latin.
+    if (str == null || classifyText(str) === "unknown")
         throw new Error("Could not detect the source script of the given text.")
     let dir = { to }
     checkForAliases(dir)
-    if (str != null)
-        if (isBicameral(dir.to))
-            return convertBicameral(str, detectAlphabet(str, str.length - 1), dir.to);
-        else
-            return convertUnicameral(str, detectAlphabet(str, str.length - 1), dir.to);
+    return safeConvert(str, detectAlphabet(str, str.length - 1), dir.to)
 }
+
+// Per-alphabet char -> first-index maps, built on first use. Mirrors
+// Array.indexOf's first-match semantics exactly (first-wins on duplicates), so
+// conversion output is byte-identical to the old indexOf scan — just O(1) per
+// character instead of O(m). data.alphabets is never mutated at runtime.
+const reverseIndex = new Map();
+const indexOfChar = (from, ch) => {
+    let map = reverseIndex.get(from);
+    if (map === undefined) {
+        map = new Map();
+        const alphabet = data.alphabets[from];
+        for (let i = 0, len = alphabet.length; i < len; i++)
+            if (!map.has(alphabet[i])) map.set(alphabet[i], i);
+        reverseIndex.set(from, map);
+    }
+    const idx = map.get(ch);
+    return idx === undefined ? -1 : idx;
+};
 
 const convertUnicameral = (str, from, to) => {
     let converted = "";
     for (let i = 0, len = str.length; i < len; i++) {
-        let key = data.alphabets[to][data.alphabets[from].indexOf(str[i])];
+        let key = data.alphabets[to][indexOfChar(from, str[i])];
         converted += key === undefined ? str[i] : key;
     }
     return converted;
@@ -60,7 +76,7 @@ const convertBicameral = (str, from, to) => {
 
     let converted = "";
     for (let i = 0, len = str.length; i < len; i++) {
-        let key = data.alphabets[lowerScript][data.alphabets[from].indexOf(str[i])];
+        let key = data.alphabets[lowerScript][indexOfChar(from, str[i])];
         converted += key === undefined ? str[i] : key;
     }
 
@@ -105,10 +121,19 @@ const safeConvert = (str, from, to) => {
             return convertBicameral(str, from, to);
 }
 
-export { convert, interpret, convertUnicameral, convertBicameral, safeConvert }
+// Script classifier. `classify` is the blessed name (it matches the
+// cross-language golden id "core.classify"); `$` is the historical alias. Both
+// are callable AND carry .classifyText, so core.$(text), core.classify(text)
+// and core.$.classifyText(text) all work. Wrapping classifyText (rather than
+// assigning it) keeps the shared utils function unmutated.
+const classify = (str) => classifyText(str);
+classify.classifyText = classifyText;
+
+export { convert, interpret, classify, convertUnicameral, convertBicameral, safeConvert }
 
 export default {
     convert,
     interpret,
-    $: classifyText
+    classify,
+    $: classify
 };

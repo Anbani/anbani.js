@@ -10,7 +10,6 @@ import preprocessing from "./lib/preprocessing.mjs";
 // Natural-language utilities, mirroring anbani.py's `anbani.nlp` package.
 const nlp = { contractions, georgianisation, preprocessing };
 
-core.$ = {classifyText : utils.classifyText}
 let scripts = Object.keys(data.alphabets).slice(0,4)
     .concat(["khutsuri", "shanidziseuli", "tfileliseuli", "sasataure"])
     .concat(Object.keys(data.alphabets).slice(4));
