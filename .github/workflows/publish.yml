@@ -27,14 +27,14 @@ jobs:
       contents: read
       id-token: write   # required for trusted publishing (OIDC)
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # OIDC trusted publishing needs npm >= 11.5.1. Node 24 bundles npm 11.16,
       # so take it from the runtime rather than self-upgrading npm in place —
       # `npm install -g npm@latest` overwrites the running npm and leaves it
       # unable to resolve its own deps ("Cannot find module 'sigstore'").
       # (npm 12 also requires Node >= 22.22, so it can't install on Node 20 at all.)
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: "24"
           registry-url: "https://registry.npmjs.org"
