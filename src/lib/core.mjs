@@ -48,6 +48,11 @@ const convertUnicameral = (str, from, to) => {
     return converted;
 }
 
+const SENTENCE_LETTER = "A-Za-zა-ჿႠ-Ⴥⴀ-ⴥᲐ-Ჿ0-9";
+const SENTENCE_START = new RegExp(
+    "((?:^|\\n[ \\t]*\\n)[\\s„“\"«‘(\\[—–-]*|[?.!჻][”“\"»’)\\]]*\\s+[„“\"«‘(\\[]*|:\\s*[„“\"«])" +
+    "([" + SENTENCE_LETTER + "])", "g");
+
 const convertBicameral = (str, from, to) => {
     const rules = {
         "sasataure": {
@@ -80,27 +85,16 @@ const convertBicameral = (str, from, to) => {
         converted += key === undefined ? str[i] : key;
     }
 
-    // First Letter
-    converted = toUpperCase(converted, lowerScript, upperScript);
-
-    // Letters after punctuation 
-    let matched = converted.match(/[?.!]\s+[A-Za-zႠ-ჰⴀ-ⴠᲐ-Ჰ0-9]/g);
-    if (matched != null)
-        for (let i = 0; i < matched.length; i++) {
-            converted = setCharAt(
-                converted,
-                converted.indexOf(matched[i]),
-                matched[i].substring(0, matched[i].length - 1)
-                    .concat(toUpperCase(
-                        matched[i][matched[i].length - 1],
-                        lowerScript,
-                        upperScript
-                    ))
-            );
-        }
+    // Sentence starts take the upper script, in one linear pass:
+    //   - the text's start and every paragraph start (blank line), past opening quotes, brackets and dialogue dashes;
+    //   - a letter after ? . ! ჻, past closing quotes and brackets, whitespace, then opening quotes;
+    //   - direct speech after a colon (: „).
+    // Never after ; , … or a single line break without a terminator (verse lines continue their sentence), and never
+    // after a dash mid-paragraph ("ჭირიაო! — იტყოდა": the author's words). Mirrors anbani.py SENTENCE_START.
+    converted = converted.replace(SENTENCE_START, (m, pre, letter) => pre + toUpperCase(letter, lowerScript, upperScript));
 
     // Letters after special character ' apostrophe
-    matched = converted.match(/[Ⴀ-ჰⴀ-ⴠᲐ-Ჰ]\'/g);
+    let matched = converted.match(/[Ⴀ-ჰⴀ-ⴠᲐ-Ჰ]\'/g);
     if (matched != null)
         for (let i = 0; i < matched.length; i++) {
             converted = setCharAt(
