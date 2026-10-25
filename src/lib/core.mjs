@@ -1,5 +1,13 @@
 import data from "./data.mjs";
-import { checkForAliases, classifyText, checkForDirection, isBicameral, toUpperCase, detectAlphabet, setCharAt } from "./utils.mjs";
+import { checkForAliases, classifyText, checkForDirection, isBicameral, toUpperCase, setCharAt } from "./utils.mjs";
+
+// Bicameral scripts pair an upper-case and a lower-case unicameral script. Mirrors anbani.py BICAMERAL_RULES.
+const BICAMERAL_RULES = {
+    sasataure: { upper: "asomtavruli", lower: "mtavruli" },
+    tfileliseuli: { upper: "mtavruli", lower: "mkhedruli" },
+    shanidziseuli: { upper: "asomtavruli", lower: "mkhedruli" },
+    khutsuri: { upper: "asomtavruli", lower: "nuskhuri" },
+};
 
 
 const convert = (str, from, to) => {
@@ -14,11 +22,24 @@ const interpret = (str, to) => {
     // (null/undefined, mixed scripts, digits, empty) instead of passing it
     // through. The explicit null check matters — regex.test(null) coerces to
     // the string "null" and would misclassify as latin.
-    if (str == null || classifyText(str) === "unknown")
+    let from = str == null ? "unknown" : classifyText(str)
+    if (from === "unknown")
         throw new Error("Could not detect the source script of the given text.")
-    let dir = { to }
+    if (from in BICAMERAL_RULES) {
+        // Mixed-case Georgian: fold the upper script into the lower one, then convert from it (anbani.py interpret).
+        const { upper, lower } = BICAMERAL_RULES[from]
+        let folded = ""
+        for (let i = 0, len = str.length; i < len; i++) {
+            const key = data.alphabets[lower][indexOfChar(upper, str[i])]
+            folded += key === undefined || key === "" ? str[i] : key
+        }
+        str = folded
+        from = lower
+    }
+    let dir = { from: from === "latin" ? "qwerty" : from, to }
     checkForAliases(dir)
-    return safeConvert(str, detectAlphabet(str, str.length - 1), dir.to)
+    checkForDirection(dir)
+    return safeConvert(str, dir.from, dir.to)
 }
 
 // Per-alphabet char -> first-index maps, built on first use. Mirrors
@@ -43,46 +64,25 @@ const convertUnicameral = (str, from, to) => {
     let converted = "";
     for (let i = 0, len = str.length; i < len; i++) {
         let key = data.alphabets[to][indexOfChar(from, str[i])];
-        converted += key === undefined ? str[i] : key;
+        // No counterpart ("" or not in the source table): keep the character, never drop it.
+        converted += key === undefined || key === "" ? str[i] : key;
     }
     return converted;
 }
 
-const SENTENCE_LETTER = "A-Za-zა-ჿႠ-Ⴥⴀ-ⴥᲐ-Ჿ0-9";
+const SENTENCE_LETTER = "A-Za-zა-ჿႠ-ჅჇჍⴀ-ⴥⴧⴭᲐ-Ჿ0-9";
 const SENTENCE_START = new RegExp(
     "((?:^|\\n[ \\t]*\\n)[\\s„“\"«‘(\\[—–-]*|[?.!჻][”“\"»’)\\]]*\\s+[„“\"«‘(\\[]*|:\\s*[„“\"«])" +
     "([" + SENTENCE_LETTER + "])", "g");
 
 const convertBicameral = (str, from, to) => {
-    const rules = {
-        "sasataure": {
-            upper: "asomtavruli",
-            lower: "mtavruli"
-        },
-
-        "tfileliseuli": {
-            upper: "mtavruli",
-            lower: "mkhedruli"
-        },
-
-        "shanidziseuli": {
-            upper: "asomtavruli",
-            lower: "mkhedruli"
-        },
-
-        "khutsuri": {
-            upper: "asomtavruli",
-            lower: "nuskhuri"
-        }
-    }
-
-    let upperScript = rules[to].upper;
-    let lowerScript = rules[to].lower;
+    let upperScript = BICAMERAL_RULES[to].upper;
+    let lowerScript = BICAMERAL_RULES[to].lower;
 
     let converted = "";
     for (let i = 0, len = str.length; i < len; i++) {
         let key = data.alphabets[lowerScript][indexOfChar(from, str[i])];
-        converted += key === undefined ? str[i] : key;
+        converted += key === undefined || key === "" ? str[i] : key;
     }
 
     // Sentence starts take the upper script, in one linear pass:
@@ -93,8 +93,8 @@ const convertBicameral = (str, from, to) => {
     // after a dash mid-paragraph ("ჭირიაო! — იტყოდა": the author's words). Mirrors anbani.py SENTENCE_START.
     converted = converted.replace(SENTENCE_START, (m, pre, letter) => pre + toUpperCase(letter, lowerScript, upperScript));
 
-    // Letters after special character ' apostrophe
-    let matched = converted.match(/[Ⴀ-ჰⴀ-ⴠᲐ-Ჰ]\'/g);
+    // Letters after special character ' apostrophe (every Georgian letter; mirrors anbani.py)
+    let matched = converted.match(/[ა-ჿႠ-ჅჇჍⴀ-ⴥⴧⴭᲐ-Ჿ]'/g);
     if (matched != null)
         for (let i = 0; i < matched.length; i++) {
             converted = setCharAt(

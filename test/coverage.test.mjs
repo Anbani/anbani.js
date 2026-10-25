@@ -27,9 +27,21 @@ describe("core.interpret", function () {
   it("detects a qwerty source for latin input", function () {
     assert.strictEqual(core.interpret("anbani", "mkhedruli"), "ანბანი");
   });
+
+  it("folds a bicameral source before converting", function () {
+    assert.strictEqual(core.interpret("Საქართველო", "phonetic"), "sɑkʰɑrtʰvɛlɔ");
+  });
+
+  it("refuses cyrillic like anbani.py", function () {
+    assert.throws(() => core.interpret("привет", "mkhedruli"), /not supported/);
+  });
 });
 
 describe("utils", function () {
+  it("detectAlphabet survives a long trailing run", function () {
+    assert.strictEqual(utils.detectAlphabet("ა" + " ".repeat(20000), 20000), "mkhedruli");
+  });
+
   it("classifyText distinguishes scripts", function () {
     assert.strictEqual(utils.classifyText("rostevan"), "latin");
     assert.strictEqual(utils.classifyText("привет"), "cyrillic");

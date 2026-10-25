@@ -51,7 +51,8 @@ const _wrapRe = new RegExp(
   `(?<![${W}])(?:[${W}]+-[${W}]+|[${W}]+)(?![${W}])`,
   "gu"
 );
-const _unwrapRe = new RegExp(`<([${W}]+)>`, "gu");
+// Same shape as _wrapRe, hyphenated words included (they used to keep their chevrons).
+const _unwrapRe = new RegExp(`<([${W}]+(?:-[${W}]+)?)>`, "gu");
 
 const _decapitalise = (text) => {
   const parts = text.split(/([.!?]\s*)/);

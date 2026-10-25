@@ -112,15 +112,16 @@ Here are all of the conversions supported. Note that you may convert `to` any of
 |tfileliseuli|Ქართული|Დავით აღმაშენებელი ქართველთა წმინდანია|
 |sasataure|ႵᲐᲠᲗᲣᲚᲘ|ႣᲐᲕᲘᲗ ᲐᲦᲛᲐᲨᲔᲜᲔᲑᲔᲚᲘ ᲥᲐᲠᲗᲕᲔᲚᲗᲐ ᲬᲛᲘᲜᲓᲐᲜᲘᲐ|
 |nuskhuri|ⴕⴀⴐⴇⴓⴊⴈ|ⴃⴀⴅⴈⴇ ⴀⴖⴋⴀⴘⴄⴌⴄⴁⴄⴊⴈ ⴕⴀⴐⴇⴅⴄⴊⴇⴀ ⴜⴋⴈⴌⴃⴀⴌⴈⴀ|
-|homoglyph|ⴕⴢᦝᦎ᧗ⴝ‎ᦵ|ᕦⴢᧆ‎ᦵᦎ ⴢⴜⴋⴢ𑇤၅চ၅ձ၅ⴝ‎ᦵ ⴕⴢᦝᦎᧆ၅ⴝᦎⴢ წⴋ‎ᦵচᕦⴢচ‎ᦵⴢ|
+|homoglyph|𑐋১ᦝᦎᩂⴝᨣ|⁨𐬉⁩১ꝫᨣᦎ ১ꨈ𖬖১Ϡ᪅б᪅ꝺ᪅ⴝᨣ 𑐋১ᦝᦎꝫ᪅ⴝᦎ১ ꨓ𖬖ᨣб⁨𐬉⁩১бᨣ১|
 |phonetic|kʰɑrtʰuli|dɑvitʰ ɑʁmɑʃɛnɛbɛli kʰɑrtʰvɛltʰɑ t͡sʼmindɑniɑ|
 |braille|⠻⠁⠗⠋⠥⠇⠊|⠙⠁⠺⠊⠋ ⠁⠫⠍⠁⠱⠑⠝⠑⠃⠑⠇⠊ ⠻⠁⠗⠋⠺⠑⠇⠋⠁ ⠹⠍⠊⠝⠙⠁⠝⠊⠁|
 |common|qartuli|davit aghmashenebeli qartvelta tsmindania|
-|cyrillic|картули|давит агмашенебели картвелта тцминданиа|
-|greek|καρτουλη|νταβητ αγμασͱενεμπελη καρτβελτα τσμηνντανηα|
+|cyrillic|картули|давит агмашенебели картвелта цминданиа|
+|greek|καρτουλι|νταβιτ αγμασενεμπελι καρτβελτα τσμινντανια|
 |armenian|քառթուլի|դավիթ աղմաշէնէբէլի քառթվէլթա ծմինդանիա|
 |iso_9984|k'art'uli|davit' aḡmašenebeli k'art'velt'a cmindania|
 |national|kartuli|davit aghmashenebeli kartvelta ts'mindania|
+|national_simplified|kartuli|davit aghmashenebeli kartvelta tsmindania|
 |bgn|k'art'uli|davit' aghmashenebeli k'art'velt'a tsmindania|
 |titus|kartuli|davit aġmašenebeli kartvelta c̣mindania|
 |qwerty|qarTuli|daviT aRmaSenebeli qarTvelTa wmindania|
@@ -133,22 +134,23 @@ If you are wondering what Georgian alphabets look like, or what's the difference
 
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
-|names|ან|ბან|გან|დონ|ენ|ვინ|ზენ|თან|ინ|კან|ლას|მან|ნარ|ონ|პარ|ჟან|რაე|სან|ტარ|უნ|ფარ|ქან|ღან|ყარ|შინ|ჩინ|ცან|ძილ|წილ|ჭარ|ხან|ჯან|ჰაე|ეჲ|ჲე|ჳე|ჴარ|ჰოე|ჶი|ჷნ|ჸინ|გან ამოტრიალებული|აინ ამოტრიალებული|გამყოფი|ნარ მოდიფიკატორი|აენ|სიმაგრის ნიშანი|ლაბიალიზაციის ნიშანი|ა-უმლაუტი|ა-მაკრონი|ა-მაკრონ-უმლაუტი|ე-მაკრონი|ი-მაკრონი|ო-უმლაუტი|ო-მაკრონი|ო-მაკრონ-უმლაუტი|უ-უმლაუტი|უ-მაკრონი|უ-მაკრონ-უმლაუტი|უ-ბრჯგუ|ჷნ-მაკრონი|წერტილი|მძიმე|კითხვის ნიშანი|ძახილის ნიშანი|წერტილ-მძიმე|ორწერტილი|
+|names|ან|ბან|გან|დონ|ენ|ვინ|ზენ|თან|ინ|კან|ლას|მან|ნარ|ონ|პარ|ჟან|რაე|სან|ტარ|უნ|ფარ|ქან|ღან|ყარ|შინ|ჩინ|ცან|ძილ|წილ|ჭარ|ხან|ჯან|ჰაე|ეჲ|ჲე|ჳე|ჴარ|ჰოე|ჶი|ჷნ|ჸინ|გან ამოტრიალებული|აინ|გამყოფი|ნარ მოდიფიკატორი|აენ|სიმაგრის ნიშანი|ლაბიალიზაციის ნიშანი|ა-უმლაუტი|ა-მაკრონი|ა-მაკრონ-უმლაუტი|ე-მაკრონი|ი-მაკრონი|ო-უმლაუტი|ო-მაკრონი|ო-მაკრონ-უმლაუტი|უ-უმლაუტი|უ-მაკრონი|უ-მაკრონ-უმლაუტი|უ-ბრჯგუ|ჷნ-მაკრონი|წერტილი|მძიმე|კითხვის ნიშანი|ძახილის ნიშანი|წერტილ-მძიმე|ორწერტილი|
 |mkhedruli|ა|ბ|გ|დ|ე|ვ|ზ|თ|ი|კ|ლ|მ|ნ|ო|პ|ჟ|რ|ს|ტ|უ|ფ|ქ|ღ|ყ|შ|ჩ|ც|ძ|წ|ჭ|ხ|ჯ|ჰ|ჱ|ჲ|ჳ|ჴ|ჵ|ჶ|ჷ|ჸ|ჹ|ჺ|჻|ჼ|ჽ|ჾ|ჿ|ა̈|ა̄|ა̄̈|ე̄|ი̄|ო̈|ო̄|ო̄̈|უ̈|უ̄|უ̄̈|უ̂|ჷ̄|.|,|?|!|;|:|
 |mtavruli|Ა|Ბ|Გ|Დ|Ე|Ვ|Ზ|Თ|Ი|Კ|Ლ|Მ|Ნ|Ო|Პ|Ჟ|Რ|Ს|Ტ|Უ|Ფ|Ქ|Ღ|Ყ|Შ|Ჩ|Ც|Ძ|Წ|Ჭ|Ხ|Ჯ|Ჰ|Ჱ|Ჲ|Ჳ|Ჴ|Ჵ|Ჶ|Ჷ|Ჸ|Ჹ|Ჺ|||Ჽ|Ჾ|Ჿ||||||||||||||.|,|?|!|;|:|
-|asomtavruli|Ⴀ|Ⴁ|Ⴂ|Ⴃ|Ⴄ|Ⴅ|Ⴆ|Ⴇ|Ⴈ|Ⴉ|Ⴊ|Ⴋ|Ⴌ|Ⴍ|Ⴎ|Ⴏ|Ⴐ|Ⴑ|Ⴒ|Ⴓ|Ⴔ|Ⴕ|Ⴖ|Ⴗ|Ⴘ|Ⴙ|Ⴚ|Ⴛ|Ⴜ|Ⴝ|Ⴞ|Ⴟ|Ⴠ|Ⴡ|Ⴢ|Ⴣ|Ⴤ|Ⴥ||||||||||||||||||||||||.|,|?|!|;|:|
-|nuskhuri|ⴀ|ⴁ|ⴂ|ⴃ|ⴄ|ⴅ|ⴆ|ⴇ|ⴈ|ⴉ|ⴊ|ⴋ|ⴌ|ⴍ|ⴎ|ⴏ|ⴐ|ⴑ|ⴒ|ⴓ|ⴔ|ⴕ|ⴖ|ⴗ|ⴘ|ⴙ|ⴚ|ⴛ|ⴜ|ⴝ|ⴞ|ⴟ|ⴠ|ⴡ|ⴢ|ⴣ|ⴤ|ⴥ||||||||||||||||||||||||.|,|?|!|;|:|
-|homoglyph|ⴢ|ձ|ଌ|ᕦ|၅|ᧆ|୫|ᦎ|‎ᦵ|૩|ⴝ|ⴋ|চ|ᦂ|Ჴ|ળ|ᦝ|ᒑ|கு|᧗|ᦀ|ⴕ|ⴜ|ᧇ|𑇤|ⴌ|ઉ|ᑻ|წ|ჭ|ᕹ|ⴟ|Ჱ|||||||||||||||||||||||||||||.|,|?|!|;|:|
-|phonetic|ɑ|b|g|d|ɛ|v|z|tʰ|i|k'|l|m|n|ɔ|p'|ʒ|r|s|t'|u|pʰ|kʰ|ʁ|q'|ʃ|t͡ʃ|t͡s|d͡z|t͡sʼ|t͡ʃʼ|χ|d͡ʒ|h|eɪ|j|w|qʰ|oː|f|ə|ʔ|ɢ|ʕ||◌̃|ə||||||||||||||||.|,|?|!|;|:|
+|asomtavruli|Ⴀ|Ⴁ|Ⴂ|Ⴃ|Ⴄ|Ⴅ|Ⴆ|Ⴇ|Ⴈ|Ⴉ|Ⴊ|Ⴋ|Ⴌ|Ⴍ|Ⴎ|Ⴏ|Ⴐ|Ⴑ|Ⴒ|Ⴓ|Ⴔ|Ⴕ|Ⴖ|Ⴗ|Ⴘ|Ⴙ|Ⴚ|Ⴛ|Ⴜ|Ⴝ|Ⴞ|Ⴟ|Ⴠ|Ⴡ|Ⴢ|Ⴣ|Ⴤ|Ⴥ||Ⴧ||||||Ⴭ||||||||||||||||.|,|?|!|;|:|
+|nuskhuri|ⴀ|ⴁ|ⴂ|ⴃ|ⴄ|ⴅ|ⴆ|ⴇ|ⴈ|ⴉ|ⴊ|ⴋ|ⴌ|ⴍ|ⴎ|ⴏ|ⴐ|ⴑ|ⴒ|ⴓ|ⴔ|ⴕ|ⴖ|ⴗ|ⴘ|ⴙ|ⴚ|ⴛ|ⴜ|ⴝ|ⴞ|ⴟ|ⴠ|ⴡ|ⴢ|ⴣ|ⴤ|ⴥ||ⴧ||||||ⴭ||||||||||||||||.|,|?|!|;|:|
+|homoglyph|১|ꝺ|⁨𞥖⁩|⁨𐬉⁩|᪅|ꝫ|ፄ|ᦎ|ᨣ|𑑇|ⴝ|𖬖|б|ᰔ|Ჴ|𑈎|ᦝ|Ꮣ|𐐃|ᩂ|ᦜ|𑐋|ꨈ|𐔤|Ϡ|Ᏺ|ᨴ|ᖙ|ꨓ|ꞎ|ᱠ|ƾ|𑇓|||||||||||||||||||||||||||||.|,|?|!|;|:|
+|phonetic|ɑ|b|g|d|ɛ|v|z|tʰ|i|kʼ|l|m|n|ɔ|pʼ|ʒ|r|s|tʼ|u|pʰ|kʰ|ʁ|qʼ|ʃ|t͡ʃ|t͡s|d͡z|t͡sʼ|t͡ʃʼ|χ|d͡ʒ|h|ej|j|w|qʰ|oː|f|ə|ʔ|ɢ|ʕ||̃|æ||||||||||||||||.|,|?|!|;|:|
 |braille|⠁|⠃|⠛|⠙|⠑|⠺|⠵|⠋|⠊|⠅|⠇|⠍|⠝|⠕|⠏|⠚|⠗|⠎|⠞|⠥|⠧|⠻|⠫|⠮|⠱|⠟|⠉|⠽|⠹|⠭|⠓|⠪|⠯|||||||||||⠌||||||||||||||||||⠲|⠂|⠦|⠖|⠆|⠒|
 |common|a|b|g|d|e|v|z|t|i|k|l|m|n|o|p|zh|r|s|t|u|f|q|gh|y|sh|ch|c|dz|ts|tch|x|j|h|e|i|ui|x|hoi|f|oa|h|gh|rgh|||oa||||||||||||||||.|,|?|!|;|:|
-|cyrillic|а|б|г|д|е|в|з|т|и|к|л|м|н|о|п|ж|р|с|т|у|ф|к|г|к|ш|ч|ц|дз|тц|тч|х|дж|х|е|й|уй|х|хо|ф|оа|х|г|рг|||оа||||||||||||||||.|,|?|!|;|:|
-|greek|α|μπ|γγ|ντ|ε|β|ζ|τ|η|κ|λ|μ|ν|ο|π|ζͱ|ρ|σ|τ|ου|ψ|κ|γ|κͱ|σͱ|τσ|τσ|δζ|τσ|τσͱ|γχ|τζ|ͱ|ε|ι|υι|κχ|ͱοι|φ|οα|ͱ|γ|ργ|||οα||||||||||||||||.|,|?|!|;|:|
-|armenian|ա|բ|գ|դ|է|վ|զ|թ|ի|կ|լ|մ|ն|օ|պ|ժ|ռ|ս|տ|ու|փ|ք|ղ|կհ|շ|չ|ց|ձ|ծ|ճ|խ|ջ|հ|է|ի|ուի|խ|հօի|ֆ|ը|հ|ղ|ռղ|||ը||||||||||||||||.|,|?|!|;|:|
-|iso_9984|a|b|g|d|e|v|z|t'|i|k|l|m|n|o|p|ž|r|s|t|u|p'|k'|ḡ|q|š|č'|c'|j|c|č|x|ǰ|h|ē|y|w|ẖ'|ō|f|||||||||||||||||||||||.|,|?|!|;|:|
+|cyrillic|а|б|г|д|е|в|з|т|и|к|л|м|н|о|п|ж|р|с|т|у|п|к|г|к|ш|ч|ц|дз|ц|ч|х|дж|х|е|й|уй|х|хо|ф|оа|х|г|рг|||оа||||||||||||||||.|,|?|!|;|:|
+|greek|α|μπ|γκ|ντ|ε|β|ζ|τ|ι|κ|λ|μ|ν|ο|π|ζͱ|ρ|σ|τ|ου|π|κ|γ|κ|σ|τσ|τσ|τζ|τσ|τσ|χ|τζ|ͱ|ε|ι|υι|κχ|ͱοι|φ|οα|ͱ|γ|ργ|||οα||||||||||||||||.|,|?|!|;|:|
+|armenian|ա|բ|գ|դ|է|վ|զ|թ|ի|կ|լ|մ|ն|օ|պ|ժ|ռ|ս|տ|ու|փ|ք|ղ|ղ|շ|չ|ց|ձ|ծ|ճ|խ|ջ|հ|է|ի|ուի|խ|հօի|ֆ|ը|հ|ղ|ռղ|||ը||||||||||||||||.|,|?|!|;|:|
+|iso_9984|a|b|g|d|e|v|z|t'|i|k|l|m|n|o|p|ž|r|s|t|u|p'|k'|ḡ|q|š|č'|c'|j|c|č|x|ǰ|h|ē|y|w|ẖ|ō|f|||||||||||||||||||||||.|,|?|!|;|:|
 |national|a|b|g|d|e|v|z|t|i|k'|l|m|n|o|p'|zh|r|s|t'|u|p|k|gh|q'|sh|ch|ts|dz|ts'|ch'|kh|j|h|||||||||||||||||||||||||||||.|,|?|!|;|:|
-|bgn|a|b|g|d|e|v|z|t'|i|k|l|m|n|o|p|zh|r|s|t|u|p'|k'|gh|q|sh|ch'|ts'|dz|ts|ch|kh|j|h|ey|j||q'|||||||||||||||||||||||||.|,|?|!|;|:|
-|titus|a|b|g|d|e|v|z|t|i|ḳ|l|m|n|o|ṗ|ž|r|s|ṭ|u|p|k|ġ|q̇|š|č|c|ӡ|c̣|č̣|x|ǯ|h|ē|y|w|q|ō||||||||||||||||||||||||.|,|?|!|;|:|
+|national_simplified|a|b|g|d|e|v|z|t|i|k|l|m|n|o|p|zh|r|s|t|u|p|k|gh|q|sh|ch|ts|dz|ts|ch|kh|j|h|||||||||||||||||||||||||||||.|,|?|!|;|:|
+|bgn|a|b|g|d|e|v|z|t'|i|k|l|m|n|o|p|zh|r|s|t|u|p'|k'|gh|q|sh|ch'|ts'|dz|ts|ch|kh|j|h|||||||||||||||||||||||||||||.|,|?|!|;|:|
+|titus|a|b|g|d|e|v|z|t|i|ḳ|l|m|n|o|ṗ|ž|r|s|ṭ|u|p|k|ġ|q̇|š|č|c|ʒ|c̣|č̣|x|ǯ|h|ē|y|w|q|ō||||||||||||||||||||||||.|,|?|!|;|:|
 |qwerty|a|b|g|d|e|v|z|T|i|k|l|m|n|o|p|J|r|s|t|u|f|q|R|y|S|C|c|Z|w|W|x|j|h|E|I|V|X|H|F|D|Y|G|L|>|N|<|{|}||||||||||||||.|,|?|!|;|:|
 |numeric|1|2|3|4|5|6|7|9|10|20|30|40|50|70|80|90|100|200|300|400|500|600|700|800|900|1000|2000|3000|4000|5000|6000|8000|9000|8|60|400|7000|10000||||||||||||||||||||||||.|,|?|!|;|:|
 
@@ -344,6 +346,17 @@ Notes:
 
 ## Parity with anbani.py
 anbani.js and [anbani.py](https://github.com/Anbani/anbani.py) share one behavior contract, proved in CI by the byte-identical `spec/golden.json` both test suites run. Feature-equivalent as of 3.0; the only intentional gaps are the browser/UMD bundle (js-only) and `ebook2text` (Python-only).
+
+## 3.4
+Table fixes, each backed by a source in [docs/table-sources.md](docs/table-sources.md).
+- New `national_simplified`: the apostrophe-free national system (State Language Department guidelines; alias `გამარტივებული`).
+- Letters with no counterpart in the target table are **kept**, no longer dropped (ჶ–ჿ in Asomtavruli/Nuskhuri, ჱ–ჵ in the 33-letter Latin tables).
+- Asomtavruli Ⴧ Ⴭ and Nuskhuri ⴧ ⴭ (YN, AEN) added, converted and detected.
+- `cyrillic`: ფ п, წ ц, ჭ ч (GUGK 1972). `greek`: ფ π, ხ χ, გ γκ, ი ι, ძ τζ, heta dropped from შ ყ ჭ. `armenian`: ყ ղ.
+- `phonetic`: ejectives all ʼ (U+02BC), ჱ ej, ჽ æ, ჼ a bare combining tilde. `iso_9984` (the 1996 edition): ჴ ẖ. `titus`: ძ ʒ. `bgn` (1981): no archaic letters.
+- `core.interpret` folds bicameral input first ("Საქართველო" converts every letter), detects braille and, like anbani.py, refuses Cyrillic. `classify` reports `"braille"`.
+- `utils.detectAlphabet` is a loop (long trailing whitespace overflowed the stack).
+- `georgianise`: hyphenated words no longer keep their `<…>` markers.
 
 ## 3.2
 - New `core.classify` — the blessed name for script classification (matches the `core.classify` id in the cross-language golden spec).

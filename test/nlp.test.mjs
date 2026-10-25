@@ -73,6 +73,11 @@ describe("nlp.georgianisation", function () {
     assert.throws(() => georgianisation.georgianise("gamarjoba", "accurate"), /Python-only/);
   });
 
+  it("hyphenated words lose their chevrons", function () {
+    const out = georgianisation.georgianise("ara-pheri mosula");
+    assert.ok(!/[<>]/.test(out), out);
+  });
+
   it("latinise round-trips a simple word", function () {
     assert.strictEqual(georgianisation.latinise("გამარჯობა"), "gamarjoba");
   });

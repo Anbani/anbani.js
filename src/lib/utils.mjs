@@ -18,6 +18,7 @@ export const checkForAliases = (dir) => {
         ბერძნული: "greek",
         სომხური: "armenian",
         ნაციონალური: "national",
+        გამარტივებული: "national_simplified",
         ქვერთი: "qwerty",
         ზოგადი: "common",
         ტრანსკრიფცია: "common",
@@ -70,32 +71,30 @@ export const setCharAt = (str, where, what, offset = 0) => {
 
 export const toUpperCase = (word, from, to) => {
     let char = data.alphabets[to][data.alphabets[from].indexOf(word[0])];
-    char = char == undefined ? word[0] : char;
+    char = char == undefined || char === "" ? word[0] : char;
     return setCharAt(word, 0, char);
 };
 
+// Script of the last recognisable character at or before idx (a loop: long trailing runs used to overflow the stack).
 export const detectAlphabet = (str, idx) => {
-    if (idx < 0)
-        return "qwerty"
-    if (data.regex.mkhedruli.test(str[idx]))
-        return "mkhedruli";
-    if (data.regex.latin.test(str[idx]))
-        return "qwerty";
-    if (data.regex.asomtavruli.test(str[idx]))
-        return "asomtavruli";
-    if (data.regex.mtavruli.test(str[idx]))
-        return "mtavruli";
-    if (data.regex.nuskhuri.test(str[idx]))
-        return "nuskhuri";
-    return detectAlphabet(str, idx - 1);
+    for (; idx >= 0; idx--) {
+        const ch = str[idx];
+        if (data.regex.mkhedruli.test(ch)) return "mkhedruli";
+        if (data.regex.latin.test(ch)) return "qwerty";
+        if (data.regex.asomtavruli.test(ch)) return "asomtavruli";
+        if (data.regex.mtavruli.test(ch)) return "mtavruli";
+        if (data.regex.nuskhuri.test(ch)) return "nuskhuri";
+        if (data.regex.braille.test(ch)) return "braille";
+    }
+    return "qwerty";
 };
 
-// Names the source script of a run: one of the ten script names for a pure or
+// Names the source script of a run: one of the eleven script names for a pure or
 // recognised bicameral run, or "unknown" for empty/mixed/undetectable input.
 // Always returns a string — the boolean `vector` below is internal scratch and
 // is never returned (pre-3.0 versions leaked it; 3.x does not).
 export const classifyText = (str) => {
-    /* MATCHES ALPHABETS [Mkhedruli, Mtavruli, Asomtavruli, Nuskhuri, Latin, Cyrillic] */
+    /* MATCHES ALPHABETS [Mkhedruli, Mtavruli, Asomtavruli, Nuskhuri, Latin, Cyrillic, Braille] */
     let vector = [
         data.regex.mkhedruli.test(str),
         data.regex.mtavruli.test(str),
@@ -103,40 +102,44 @@ export const classifyText = (str) => {
         data.regex.nuskhuri.test(str),
         data.regex.latin.test(str),
         data.regex.cyrillic.test(str),
+        data.regex.braille.test(str),
     ];
 
     // Georgian alphabets
-    if (isSame(vector, [true, false, false, false, false, false]))
+    if (isSame(vector, [true, false, false, false, false, false, false]))
         return "mkhedruli";
 
-    if (isSame(vector, [false, true, false, false, false, false]))
+    if (isSame(vector, [false, true, false, false, false, false, false]))
         return "mtavruli";
 
-    if (isSame(vector, [false, false, true, false, false, false]))
+    if (isSame(vector, [false, false, true, false, false, false, false]))
         return "asomtavruli";
 
-    if (isSame(vector, [false, false, false, true, false, false]))
+    if (isSame(vector, [false, false, false, true, false, false, false]))
         return "nuskhuri";
 
     // Georgian bicameral writings
-    if (isSame(vector, [true, true, false, false, false, false]))
+    if (isSame(vector, [true, true, false, false, false, false, false]))
         return "tfileliseuli";
 
-    if (isSame(vector, [true, false, true, false, false, false]))
+    if (isSame(vector, [true, false, true, false, false, false, false]))
         return "shanidziseuli";
 
-    if (isSame(vector, [false, false, true, true, false, false]))
+    if (isSame(vector, [false, false, true, true, false, false, false]))
         return "khutsuri";
 
-    if (isSame(vector, [false, true, true, false, false, false]))
+    if (isSame(vector, [false, true, true, false, false, false, false]))
         return "sasataure";
 
     // Non-Georgian alphabets
-    if (isSame(vector, [false, false, false, false, true, false]))
+    if (isSame(vector, [false, false, false, false, true, false, false]))
         return "latin";
 
-    if (isSame(vector, [false, false, false, false, false, true]))
+    if (isSame(vector, [false, false, false, false, false, true, false]))
         return "cyrillic";
+
+    if (isSame(vector, [false, false, false, false, false, false, true]))
+        return "braille";
 
     return "unknown";
 };
