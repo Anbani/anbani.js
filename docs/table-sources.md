@@ -25,6 +25,12 @@ What each conversion table in `src/lib/data.mjs` (= anbani.py `anbani/data/lette
 - `greek`: no standard. Modern letters follow Greek Wikipedia's spelling of Georgian names (ფ π, ხ χ, გ γκ, ბ μπ, დ ντ, შ σ, ჭ/ჩ/წ/ც τσ, ძ/ჯ τζ, ყ κ, ი ι). ჟ, ჰ and archaic letters: convention.
 - `armenian`: no standard. ყ ղ follows Armenian Wikipedia's Georgian place names. Rest: convention.
 
+## Numerals (`numeric`)
+ა1 … თ9, ი10 … ჟ90, რ100 … ყ800, შ900, ჩ1000 … ჰ9000, ჵ10000; archaic ჱ8, ჲ60, ჳ400, ჴ7000. Agreeing tables: English
+Wikipedia "Georgian numerals" (after Makharoblidze, *A Short Grammar of Georgian*, 2009) and Georgian Wikipedia
+"ქართული ანბანი". Open: უ. English Wikipedia gives it 400, like ჳ; Georgian Wikipedia leaves it out of the system. We
+keep 400 (convention) until a primary source (Shanidze, Makharoblidze) is opened.
+
 ## Unicode
 - Asomtavruli Ⴧ U+10C7 / Ⴭ U+10CD and Nuskhuri ⴧ U+2D27 / ⴭ U+2D2D (YN, AEN): Unicode 6.1.
 - U+10FA is GEORGIAN LETTER AIN (`names`).

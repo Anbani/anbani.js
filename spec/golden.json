@@ -81,6 +81,11 @@
     { "id": "toolkit.count", "args": ["აბ ბ"], "expect": { "Ა": 1, "Ბ": 2 } },
     { "id": "toolkit.frequency", "note": "denominator is full length incl. spaces", "args": ["აბ ბ"], "expect": { "Ა": 0.25, "Ბ": 0.5 } },
     { "id": "toolkit.friedman", "args": ["ააბ"], "expect": 0.3333333333333333 },
-    { "id": "toolkit.friedman", "note": "index of coincidence", "args": ["იყო არაბეთს როსტევან მეფე ღმრთისაგან სვიანი"], "expect": 0.06116642958748222 }
+    { "id": "toolkit.friedman", "note": "index of coincidence", "args": ["იყო არაბეთს როსტევან მეფე ღმრთისაგან სვიანი"], "expect": 0.06116642958748222 },
+    { "id": "toolkit.numeric_value", "note": "letter values summed, not joined", "args": ["ჩქ"], "expect": 1600 },
+    { "id": "toolkit.numeric_value", "note": "a word", "args": ["ქართველი"], "expect": 761 },
+    { "id": "toolkit.numeric_value", "note": "Asomtavruli", "args": ["ႵႠႰႧ"], "expect": 710 },
+    { "id": "toolkit.numeric_value", "note": "archaic letters: ჵ 10000, ჴ 7000; non-letters 0", "args": ["ჵ ჴ!"], "expect": 17000 },
+    { "id": "toolkit.numeric_value", "note": "no Georgian letters", "args": ["abc 12"], "expect": 0 }
   ]
 }

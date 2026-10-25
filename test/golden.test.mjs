@@ -27,6 +27,7 @@ const registry = {
   "toolkit.count": (a) => anbani.toolkit.count(...a),
   "toolkit.frequency": (a) => anbani.toolkit.frequency(...a),
   "toolkit.friedman": (a) => anbani.toolkit.friedman(...a),
+  "toolkit.numeric_value": (a) => anbani.toolkit.numericValue(...a),
 };
 
 const almostEqual = (a, b) => {

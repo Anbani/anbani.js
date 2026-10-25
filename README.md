@@ -357,6 +357,7 @@ Table fixes, each backed by a source in [docs/table-sources.md](docs/table-sourc
 - `core.interpret` folds bicameral input first ("Საქართველო" converts every letter), detects braille and, like anbani.py, refuses Cyrillic. `classify` reports `"braille"`.
 - `utils.detectAlphabet` is a loop (long trailing whitespace overflowed the stack).
 - `georgianise`: hyphenated words no longer keep their `<…>` markers.
+- New `toolkit.numericValue(text)`: the sum of the letters' numeral values (ჩქ → 1600); the `numeric` target still writes each letter's value.
 
 ## 3.2
 - New `core.classify` — the blessed name for script classification (matches the `core.classify` id in the cross-language golden spec).
